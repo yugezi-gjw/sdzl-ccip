@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zivy009.demo.springbootshirodwz.persistence.dao.BloodTestedMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.zivy009.demo.springbootshirodwz.persistence.model.BloodTested">
+		<id column="id" property="id" />
+		<result column="encounter_id" property="encounterId" />
+		<result column="tested_name" property="testedName" />
+		<result column="white_cells" property="whiteCells" />
+		<result column="neutrophil_leucocyte" property="neutrophilLeucocyte" />
+		<result column="lymphocyte" property="lymphocyte" />
+		<result column="monocyte" property="monocyte" />
+		<result column="thrombocyte" property="thrombocyte" />
+		<result column="SII" property="SII" />
+		<result column="NLR" property="NLR" />
+		<result column="PLR" property="PLR" />
+		<result column="LMR" property="LMR" />
+	</resultMap>
+
+</mapper>

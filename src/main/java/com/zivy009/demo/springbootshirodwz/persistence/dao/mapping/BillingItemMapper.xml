@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zivy009.demo.springbootshirodwz.persistence.dao.BillingItemMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.zivy009.demo.springbootshirodwz.persistence.model.BillingItem">
+		<id column="id" property="id" />
+		<result column="code" property="code" />
+		<result column="name" property="name" />
+		<result column="parent_code" property="parentCode" />
+		<result column="parent_name" property="parentName" />
+		<result column="description" property="description" />
+		<result column="unit" property="unit" />
+		<result column="price" property="price" />
+		<result column="comment" property="comment" />
+		<result column="insurance_category" property="insuranceCategory" />
+		<result column="injure_insurance_category" property="injureInsuranceCategory" />
+		<result column="status" property="status" />
+		<result column="created_at" property="createdAt" />
+		<result column="created_by" property="createdBy" />
+		<result column="updated_at" property="updatedAt" />
+		<result column="updated_by" property="updatedBy" />
+		<result column="deleted_at" property="deletedAt" />
+		<result column="deleted_by" property="deletedBy" />
+	</resultMap>
+
+</mapper>
