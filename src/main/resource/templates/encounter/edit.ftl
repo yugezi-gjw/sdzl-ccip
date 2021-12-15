@@ -1,5 +1,6 @@
  
 <form method="post" action="encounter/save.do" class="pageForm required-validate" onsubmit="return iframeCallback(this, dialogAjaxDone);">
+	<input name="id" type="hidden" value="${(model.id)!}" />
 	<input name="patientId" type="hidden" value="${(model.patientId)!}" />
 	<div class="formBar">
 		<ul>
@@ -38,8 +39,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="alive" value="${(model.alive)!}">
 						<option value=""></option>
-						<option value="0">生存</option>
-						<option value="1">死亡</option>
+						<#if model.alive?? && model.alive == "0">
+							<option value="0" selected>生存</option>
+							<option value="1">死亡</option>
+						<#elseif model.alive?? && model.alive == "1">
+							<option value="0">生存</option>
+							<option value="1" selected>死亡</option>
+						<#else>
+							<option value="0">生存</option>
+							<option value="1">死亡</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -56,9 +65,23 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="treatType" value="${(model.treatType)!}">
 						<option value=""></option>
-						<option value="1">靶向先</option>
-						<option value="2">放疗先</option>
-						<option value="0">同步</option>
+						<#if model.treatType?? && model.treatType == "0">
+							<option value="0" selected>同步</option>
+							<option value="1">靶向先</option>
+							<option value="2">放疗先</option>
+						<#elseif model.alive?? && model.alive == "1">
+							<option value="0">同步</option>
+							<option value="1" selected>靶向先</option>
+							<option value="2">放疗先</option>
+						<#elseif model.alive?? && model.alive == "2">
+							<option value="0">同步</option>
+							<option value="1">靶向先</option>
+							<option value="2" selected>放疗先</option>
+						<#else>
+							<option value="0">同步</option>
+							<option value="1">靶向先</option>
+							<option value="2">放疗先</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -67,8 +90,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="synchronous" value="${(model.synchronous)!}">
 						<option value=""></option>
-						<option value="1">是</option>
-						<option value="0">否</option>
+						<#if model.synchronous?? && model.synchronous == "0">
+							<option value="0" selected>否</option>
+							<option value="1">是</option>
+						<#elseif model.synchronous?? && model.synchronous == "1">
+							<option value="0">否</option>
+							<option value="1" selected>是</option>
+						<#else>
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -81,8 +112,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="isMultiSites" value="${(model.isMultiSites)!}">
 						<option value=""></option>
-						<option value="1">是</option>
-						<option value="0">否</option>
+						<#if model.isMultiSites?? && model.isMultiSites == "0">
+							<option value="0" selected>否</option>
+							<option value="1">是</option>
+						<#elseif model.isMultiSites?? && model.isMultiSites == "1">
+							<option value="0">否</option>
+							<option value="1" selected>是</option>
+						<#else>
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -91,8 +130,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="isPulmonaryRadiation" value="${(model.isPulmonaryRadiation)!}">
 						<option value=""></option>
-						<option value="1">有</option>
-						<option value="0">无</option>
+						<#if model.isPulmonaryRadiation?? && model.isPulmonaryRadiation == "0">
+							<option value="0" selected>无</option>
+							<option value="1">有</option>
+						<#elseif model.isPulmonaryRadiation?? && model.isPulmonaryRadiation == "1">
+							<option value="0">无</option>
+							<option value="1" selected>有</option>
+						<#else>
+							<option value="0">无</option>
+							<option value="1">有</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -105,8 +152,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="isBrainMetastases" value="${(model.isBrainMetastases)!}">
 						<option value=""></option>
-						<option value="1">有</option>
-						<option value="0">无</option>
+						<#if model.isBrainMetastases?? && model.isBrainMetastases == "0">
+							<option value="0" selected>无</option>
+							<option value="1">有</option>
+						<#elseif model.isBrainMetastases?? && model.isBrainMetastases == "1">
+							<option value="0">无</option>
+							<option value="1" selected>有</option>
+						<#else>
+							<option value="0">无</option>
+							<option value="1">有</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -115,8 +170,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="isBrainRadiation" value="${(model.isBrainRadiation)!}">
 						<option value=""></option>
-						<option value="1">有</option>
-						<option value="0">无</option>
+						<#if model.isBrainRadiation?? && model.isBrainRadiation == "0">
+							<option value="0" selected>无</option>
+							<option value="1">有</option>
+						<#elseif model.isBrainRadiation?? && model.isBrainRadiation == "1">
+							<option value="0">无</option>
+							<option value="1" selected>有</option>
+						<#else>
+							<option value="0">无</option>
+							<option value="1">有</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -129,8 +192,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="isBoneMetastases" value="${(model.isBoneMetastases)!}">
 						<option value=""></option>
-						<option value="1">有</option>
-						<option value="0">无</option>
+						<#if model.isBoneMetastases?? && model.isBoneMetastases == "0">
+							<option value="0" selected>无</option>
+							<option value="1">有</option>
+						<#elseif model.isBoneMetastases?? && model.isBoneMetastases == "1">
+							<option value="0">无</option>
+							<option value="1" selected>有</option>
+						<#else>
+							<option value="0">无</option>
+							<option value="1">有</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -139,8 +210,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="isBoneRadiation" value="${(model.isBoneRadiation)!}">
 						<option value=""></option>
-						<option value="1">有</option>
-						<option value="0">无</option>
+						<#if model.isBoneRadiation?? && model.isBoneRadiation == "0">
+							<option value="0" selected>无</option>
+							<option value="1">有</option>
+						<#elseif model.isBoneRadiation?? && model.isBoneRadiation == "1">
+							<option value="0">无</option>
+							<option value="1" selected>有</option>
+						<#else>
+							<option value="0">无</option>
+							<option value="1">有</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -173,8 +252,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="tki" value="${(model.tki)!}">
 						<option value=""></option>
-						<option value="1">是</option>
-						<option value="0">否</option>
+						<#if model.tki?? && model.tki == "0">
+							<option value="0" selected>否</option>
+							<option value="1">是</option>
+						<#elseif model.tki?? && model.tki == "1">
+							<option value="0">否</option>
+							<option value="1" selected>是</option>
+						<#else>
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -183,8 +270,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="platinumDoublet" value="${(model.platinumDoublet)!}">
 						<option value=""></option>
-						<option value="1">是</option>
-						<option value="0">否</option>
+						<#if model.platinumDoublet?? && model.platinumDoublet == "0">
+							<option value="0" selected>否</option>
+							<option value="1">是</option>
+						<#elseif model.platinumDoublet?? && model.platinumDoublet == "1">
+							<option value="0">否</option>
+							<option value="1" selected>是</option>
+						<#else>
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -193,8 +288,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="gefitinib" value="${(model.gefitinib)!}">
 						<option value=""></option>
-						<option value="1">是</option>
-						<option value="0">否</option>
+						<#if model.gefitinib?? && model.gefitinib == "0">
+							<option value="0" selected>否</option>
+							<option value="1">是</option>
+						<#elseif model.gefitinib?? && model.gefitinib == "1">
+							<option value="0">否</option>
+							<option value="1" selected>是</option>
+						<#else>
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -203,8 +306,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="angiostatin" value="${(model.angiostatin)!}">
 						<option value=""></option>
-						<option value="1">是</option>
-						<option value="0">否</option>
+						<#if model.angiostatin?? && model.angiostatin == "0">
+							<option value="0" selected>否</option>
+							<option value="1">是</option>
+						<#elseif model.angiostatin?? && model.angiostatin == "1">
+							<option value="0">否</option>
+							<option value="1" selected>是</option>
+						<#else>
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>
@@ -213,8 +324,16 @@
 				<dd>
 					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="icotinib" value="${(model.icotinib)!}">
 						<option value=""></option>
-						<option value="1">是</option>
-						<option value="0">否</option>
+						<#if model.icotinib?? && model.icotinib == "0">
+							<option value="0" selected>否</option>
+							<option value="1">是</option>
+						<#elseif model.icotinib?? && model.icotinib == "1">
+							<option value="0">否</option>
+							<option value="1" selected>是</option>
+						<#else>
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</#if>
 					</select>
 				</dd>
 			</dl>

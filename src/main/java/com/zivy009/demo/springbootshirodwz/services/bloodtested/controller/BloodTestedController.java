@@ -98,4 +98,21 @@ public class BloodTestedController extends BaseController<BloodTestedServiceImpl
         model.addAttribute("list", list);
         return viewRoot + "/list";
     }
+
+    @RequestMapping(value = "/del")
+//    @RequiresPermissions("patient:del")
+    @ResponseBody
+    String del(@RequestParam(value = "id", defaultValue = "0") Long id) {
+        String jsonReturn = this.ajaxDelSuccess();
+        try {
+            int returnInt = baseService.del(id);
+
+        }catch(MyRuntimeRightException rightE){
+            jsonReturn = this.ajaxFail("警告：" + rightE.getMessage());
+        }catch (Exception e) {
+            e.printStackTrace();
+            jsonReturn = this.ajaxFail("发生异常：" + e.getMessage());
+        }
+        return jsonReturn;
+    }
 }

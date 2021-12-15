@@ -41,3 +41,20 @@ function divRefresh(formId, rel) {
     }
     return false;
 }
+
+function deleteItem(id) {
+    alertMsg.confirm("确定要删除吗?", {
+        okCall: function(){
+            $.ajax({
+                type: 'POST',
+                url: 'bloodtested/del?id=' + id,
+                dataType:"json",
+                cache: false,
+                success: function () {
+                    divRefresh('bloodTestedForm', 'bloodTestedDiv');
+                },
+                error: DWZ.ajaxError
+            });
+        }
+    });
+}

@@ -45,12 +45,12 @@
 			<li><a class="edit" href="patient/upd?id={sid}" target="dialog"><span>修改患者</span></a></li>
 			</@shiro.hasPermission>
 			<li class="line">line</li>
-			<@shiro.hasPermission name="patient:add">
-				<li><a class="add" href="encounter/add?patientId={sid}" target="dialog" rel="save" width="850" height="750"><span>添加就诊信息</span></a></li>
-			</@shiro.hasPermission>
 			<@shiro.hasPermission name="patient:upd">
-				<li><a class="edit" href="encounter/upd?patientId={sid}" target="dialog"><span>修改就诊信息</span></a></li>
+				<li><a class="add" href="encounter/edit?patientId={sid}" target="dialog" rel="save" width="850" height="750"><span>编辑就诊信息</span></a></li>
 			</@shiro.hasPermission>
+<#--			<@shiro.hasPermission name="patient:upd">-->
+<#--				<li><a class="edit" href="encounter/upd?patientId={sid}" target="dialog"><span>修改就诊信息</span></a></li>-->
+<#--			</@shiro.hasPermission>-->
 			<li class="line">line</li>
 			<@shiro.hasPermission name="patient:imp">
 				<li><a class="icon" href="patient/imp" target="dialog" rel="save"><span>导入</span></a></li>

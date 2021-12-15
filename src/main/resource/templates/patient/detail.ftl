@@ -318,6 +318,7 @@
             <th>NLR</th>
             <th>PLR</th>
             <th>LMR</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -333,6 +334,9 @@
                         <td>${bloodTested.nlr!}</td>
                         <td>${bloodTested.plr!}</td>
                         <td>${bloodTested.lmr!}</td>
+                        <td>
+                          <a class="delete" onclick="deleteItem('${bloodTested.id}');" title="确定要删除吗?"><span>删除</span></a>
+                        </td>
             </tr>
           </#list>
           </tbody>

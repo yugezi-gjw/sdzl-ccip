@@ -14,7 +14,9 @@ import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.PatientServiceImpl;
 import com.zivy009.demo.springbootshirodwz.services.patient.vo.PatientListVo;
 import java.util.List;
+import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,26 +36,30 @@ public class EncounterController extends BaseController<EncounterServiceImpl> {
 
     String viewRoot = "encounter";
 
-    @RequestMapping("/add")
-    @RequiresPermissions("patient:add")
-    String addView(Model model, HttpServletRequest request, @RequestParam(value = "patientId", defaultValue = "0") Long patientId) {
-        EncounterDto encounterDto = new EncounterDto();
-        encounterDto.setPatientId(patientId);
-        model.addAttribute("model", encounterDto);
-        return viewRoot + "/add";
-    }
+//    @RequestMapping("/add")
+//    @RequiresPermissions("patient:add")
+//    String addView(Model model, HttpServletRequest request, @RequestParam(value = "patientId", defaultValue = "0") Long patientId) {
+//        EncounterDto encounterDto = new EncounterDto();
+//        encounterDto.setPatientId(patientId);
+//        model.addAttribute("model", encounterDto);
+//        return viewRoot + "/add";
+//    }
 
-    @RequestMapping("/upd")
+    @RequestMapping("/edit")
     @RequiresPermissions("patient:upd")
-    String updView(Model model, HttpServletRequest request, @RequestParam(value = "id", defaultValue = "0") Integer id) {
+    String updView(Model model, HttpServletRequest request, @RequestParam(value = "patientId", defaultValue = "0") Long patientId) {
         EncounterDto encounterDto = null;
-        if (id != 0) {
-            encounterDto = baseService.selectById(id);
+        if (patientId != 0) {
+            encounterDto = baseService.queryActiveEncounterByPatient(patientId);
+            if (Objects.isNull(encounterDto) || Objects.isNull(encounterDto.getId())) {
+                encounterDto = new EncounterDto();
+                encounterDto.setPatientId(patientId);
+            }
         } else {
-            throw new MyRuntimeException("");
+            throw new MyRuntimeException("The patient id is null.");
         }
         model.addAttribute("model", encounterDto);
-        return viewRoot + "/add";
+        return viewRoot + "/edit";
     }
 
     @RequestMapping(value = "/save")

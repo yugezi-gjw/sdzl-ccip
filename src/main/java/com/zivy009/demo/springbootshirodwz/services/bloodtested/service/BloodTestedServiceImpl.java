@@ -47,4 +47,10 @@ public class BloodTestedServiceImpl extends ServiceImpl<BloodTestedMapper, Blood
     BloodTested bloodTested = baseMapper.selectById(id);
     return BloodTestedDto.fromEntity(bloodTested);
   }
+
+  @Override
+  public int del(Long id) {
+    int rInt = baseMapper.deleteById(id);
+    return rInt;
+  }
 }

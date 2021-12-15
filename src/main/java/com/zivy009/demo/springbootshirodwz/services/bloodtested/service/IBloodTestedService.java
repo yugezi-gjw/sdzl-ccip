@@ -8,4 +8,5 @@ public interface IBloodTestedService {
   int update(BloodTestedDto bloodTestedDto);
   BloodTestedDto selectById(Integer id);
   List<BloodTestedDto> queryByEncounterId(Long encounterId);
+  int del(Long id);
 }
