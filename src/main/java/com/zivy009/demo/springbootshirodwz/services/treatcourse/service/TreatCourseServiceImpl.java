@@ -45,6 +45,12 @@ public class TreatCourseServiceImpl extends ServiceImpl<TreatCourseMapper, Treat
   }
 
   @Override
+  public TreatCourseDto selectByTreatCourseId(String treatCourseId) {
+    TreatCourse treatCourse = baseMapper.selectByTreatCourseId(treatCourseId);
+    return TreatCourseDto.fromEntity(treatCourse);
+  }
+
+  @Override
   public int del(Long id) {
     int rInt = baseMapper.deleteById(id);
     return rInt;
@@ -55,4 +61,6 @@ public class TreatCourseServiceImpl extends ServiceImpl<TreatCourseMapper, Treat
     List<TreatCourse> treatCourseList = baseMapper.selectByPatientId(patientId);
     return TreatCourseDto.fromEntityList(treatCourseList);
   }
+
+
 }

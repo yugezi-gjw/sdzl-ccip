@@ -7,6 +7,7 @@ public interface ITreatCourseService {
   int save(TreatCourseDto treatCourseDto);
   int update(TreatCourseDto treatCourseDto);
   TreatCourseDto selectById(Long id);
+  TreatCourseDto selectByTreatCourseId(String treatCourseId);
   int del(Long id);
   List<TreatCourseDto> selectByPatientId(Long patientId);
 }

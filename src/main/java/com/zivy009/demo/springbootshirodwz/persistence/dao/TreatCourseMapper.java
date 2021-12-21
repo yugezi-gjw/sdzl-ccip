@@ -10,4 +10,7 @@ import org.apache.ibatis.annotations.Select;
 public interface TreatCourseMapper extends BaseMapper<TreatCourse> {
   @Select("SELECT a.patient_id,a.treat_course_id,a.bodypart_code,b.bodypart FROM treat_course a, bodypart b WHERE a.bodypart_code = b.bodypart_code AND patient_id = #{patientId}")
   List<TreatCourse> selectByPatientId(Long patientId);
+
+  @Select("SELECT * FROM treat_course WHERE treat_course_id = #{treatCourseId}")
+  TreatCourse selectByTreatCourseId(String treatCourseId);
 }

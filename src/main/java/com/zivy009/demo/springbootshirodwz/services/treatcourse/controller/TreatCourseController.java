@@ -10,9 +10,12 @@ import com.zivy009.demo.springbootshirodwz.services.bloodtested.service.IBloodTe
 import com.zivy009.demo.springbootshirodwz.services.encounter.dto.EncounterDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.IPatientService;
+import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.BodypartEnum;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.ChestDto;
+import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.GalactophoreDto;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.TreatCourseDto;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.IChestService;
+import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.IGalactophoreService;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.ITreatCourseService;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.TreatCourseServiceImpl;
 import java.util.List;
@@ -35,6 +38,8 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
     ITreatCourseService treatCourseService;
     @Autowired
     IChestService chestService;
+    @Autowired
+    IGalactophoreService galactophoreService;
     @Autowired
     IPatientService patientService;
     @Autowired
@@ -129,16 +134,27 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
     String bodypart(Model model, HttpServletRequest request,
         @RequestParam(value = "treatCourseId") String treatCourseId) {
 
-        ChestDto chestDto = chestService.selectByTreatCourseId(treatCourseId);
-        if (StringUtils.isEmpty(chestDto.getTreatCourseId())) {
-            chestDto.setTreatCourseId(treatCourseId);
+        List<BloodTestedDto> bloodTestedDtoList = bloodTestedService
+            .queryByTreatCourseId(treatCourseId);
+
+        TreatCourseDto treatCourseDto = treatCourseService.selectByTreatCourseId(treatCourseId);
+        if (StringUtils.equalsIgnoreCase(BodypartEnum.chest.name(), treatCourseDto.getBodypartCode())) {
+            ChestDto chestDto = chestService.selectByTreatCourseId(treatCourseId);
+            if (StringUtils.isEmpty(chestDto.getTreatCourseId())) {
+                chestDto.setTreatCourseId(treatCourseId);
+            }
+            model.addAttribute("treatCourseChest", chestDto);
+            model.addAttribute("list", bloodTestedDtoList);
+            return viewRoot + "/chest/main";
+        } else {
+            GalactophoreDto dto = galactophoreService.selectByTreatCourseId(treatCourseId);
+            if (StringUtils.isEmpty(dto.getTreatCourseId())) {
+                dto.setTreatCourseId(treatCourseId);
+            }
+            model.addAttribute("dto", dto);
+            model.addAttribute("list", bloodTestedDtoList);
+            return viewRoot + "/galactophore/main";
         }
-
-        List<BloodTestedDto> bloodTestedDtoList = bloodTestedService.queryByTreatCourseId(treatCourseId);
-
-        model.addAttribute("treatCourseChest", chestDto);
-        model.addAttribute("list", bloodTestedDtoList);
-        return viewRoot + "/treat_course_chest";
     }
 
 }
