@@ -64,8 +64,9 @@
   -->
   <script src="dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
 
-<#--  <script src="business/js/billing.js" type="text/javascript"></script>-->
+  <script src="business/js/common.js" type="text/javascript"></script>
   <script src="business/js/bloodtested.js" type="text/javascript"></script>
+  <script src="business/js/chest.js" type="text/javascript"></script>
 
   <script type="text/javascript">
       $(function () {

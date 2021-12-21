@@ -44,9 +44,9 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     Map<String, Object> map = new HashMap<String, Object>();
     MysqlGenerateSQL sql = new MysqlGenerateSQL();
     sql.SELECT(
-        "p.*, e.*");
+        "p.*");
     sql.FROM(tableName);
-    sql.LEFT_OUTER_JOIN("encounter e on p.id = e.patient_id");
+//    sql.LEFT_OUTER_JOIN("encounter e on p.id = e.patient_id");
     sql.WHERE("p.status!='deleted'");
     if (isNotEmpty(keyword)) {
       sql.WHERE("p.patient_name like #{paramMap.patient_name}");
@@ -286,7 +286,7 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
   }
 
   @Override
-  public PatientDto selectById(Integer id) {
+  public PatientDto selectById(Long id) {
 
     Patient patient = baseMapper.selectById(id);
 //    Encounter encounter = encounterMapper.queryActiveEncounterByPatient(patient.getPatientId());

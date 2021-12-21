@@ -35,20 +35,19 @@ public class BloodTestedController extends BaseController<BloodTestedServiceImpl
     @RequiresPermissions("patient:add")
     String addView(Model model, HttpServletRequest request, @RequestParam(value = "encounterId", defaultValue = "0") Long encounterId) {
         BloodTestedDto bloodTestedDto = new BloodTestedDto();
-        bloodTestedDto.setEncounterId(encounterId);
+//        bloodTestedDto.setEncounterId(encounterId);
         model.addAttribute("model", bloodTestedDto);
         return viewRoot + "/add";
     }
 
     @RequestMapping(value = "/save")
     @ResponseBody
-    String save(@RequestParam(value = "patientId", defaultValue = "0") Long patientId, BloodTestedDto bloodTestedDto) {
+    String save(@RequestParam(value = "treatCourseId") String treatCourseId, BloodTestedDto bloodTestedDto) {
 
         String jsonReturn = this.ajaxSuccess();
         int returnInt = 0;
         try {
-            EncounterDto encounterDto = encounterService.queryActiveEncounterByPatient(patientId);
-            bloodTestedDto.setEncounterId(encounterDto.getId());
+            bloodTestedDto.setTreatCourseId(treatCourseId);
             if (bloodTestedDto.getId() != null) {
                 returnInt = baseService.update(bloodTestedDto);
             } else {
@@ -90,11 +89,9 @@ public class BloodTestedController extends BaseController<BloodTestedServiceImpl
 
     @RequestMapping("/list")
     @RequiresPermissions("patient:list")
-    String detail(Model model, HttpServletRequest request, @RequestParam(value = "patientId", defaultValue = "0") Long patientId) {
-        EncounterDto encounterDto = encounterService.queryActiveEncounterByPatient(patientId);
+    String detail(Model model, HttpServletRequest request, @RequestParam(value = "treatCourseId") String treatCourseId) {
 
-        List<BloodTestedDto> list = bloodTestedService.queryByEncounterId(encounterDto.getId());
-        model.addAttribute("encounter", encounterDto);
+        List<BloodTestedDto> list = bloodTestedService.queryByTreatCourseId(treatCourseId);
         model.addAttribute("list", list);
         return viewRoot + "/list";
     }

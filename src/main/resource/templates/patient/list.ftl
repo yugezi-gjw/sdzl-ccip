@@ -46,7 +46,7 @@
 			</@shiro.hasPermission>
 			<li class="line">line</li>
 			<@shiro.hasPermission name="patient:upd">
-				<li><a class="add" href="encounter/edit?patientId={sid}" target="dialog" rel="save" width="850" height="750"><span>编辑就诊信息</span></a></li>
+				<li><a class="add" href="treatcourse/add?patientId={sid}" target="dialog" rel="save"><span>添加部位</span></a></li>
 			</@shiro.hasPermission>
 <#--			<@shiro.hasPermission name="patient:upd">-->
 <#--				<li><a class="edit" href="encounter/upd?patientId={sid}" target="dialog"><span>修改就诊信息</span></a></li>-->
@@ -86,7 +86,7 @@
 				<td>${patient.telephone2!}</td>
 				<td>
 					<@shiro.hasPermission name="patient:list">
-						<a class="button" href="patient/detail?id=${patient.id!}" onclick="viewDetail(${patient.id!})" target="navTab"><span>查看详细</span></a>
+						<a class="button" href="treatcourse/detail?patientId=${patient.id!}" onclick="viewDetail(${patient.id!})" target="navTab"><span>查看详细</span></a>
 					</@shiro.hasPermission>
 				</td>
 			</tr>

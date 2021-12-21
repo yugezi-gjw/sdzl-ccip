@@ -6,7 +6,7 @@ import java.util.List;
 public interface IBloodTestedService {
   int save(BloodTestedDto bloodTestedDto);
   int update(BloodTestedDto bloodTestedDto);
-  BloodTestedDto selectById(Integer id);
-  List<BloodTestedDto> queryByEncounterId(Long encounterId);
+  BloodTestedDto selectById(Long id);
+  List<BloodTestedDto> queryByTreatCourseId(String treatCourseId);
   int del(Long id);
 }

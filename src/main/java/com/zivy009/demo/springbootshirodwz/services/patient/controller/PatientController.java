@@ -45,12 +45,12 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         List<PatientListVo> list = new ArrayList<>();
         String keyword = RequestUtil.getString(request, "keyword");
         PatientAdvSearchDto searchParam = null;
-        if (Objects.isNull(keyword)) {
-            searchParam = getParamFromRequest(request);
-            list = baseService.list(page, searchParam);
-        } else {
+//        if (Objects.isNull(keyword)) {
+//            searchParam = getParamFromRequest(request);
+//            list = baseService.list(page, searchParam);
+//        } else {
             list = baseService.list(page, keyword);
-        }
+//        }
 
         model.addAttribute("page", page);
         model.addAttribute("list", list);
@@ -164,7 +164,7 @@ public class PatientController extends BaseController<PatientServiceImpl> {
 
     @RequestMapping("/upd")
     @RequiresPermissions("patient:upd")
-    String updView(Model model, HttpServletRequest request, @RequestParam(value = "id", defaultValue = "0") Integer id) {
+    String updView(Model model, HttpServletRequest request, @RequestParam(value = "id", defaultValue = "0") Long id) {
         PatientDto patientDto = null;
         if (id != 0) {
             patientDto = baseService.selectById(id);
@@ -217,7 +217,7 @@ public class PatientController extends BaseController<PatientServiceImpl> {
 
     @RequestMapping("/detail")
     @RequiresPermissions("patient:list")
-    String detail(Model model, HttpServletRequest request, @RequestParam(value = "id", defaultValue = "0") Integer id) {
+    String detail(Model model, HttpServletRequest request, @RequestParam(value = "id", defaultValue = "0") Long id) {
         PatientDto patientDto = null;
         if (id != 0) {
             patientDto = baseService.selectById(id);
@@ -229,8 +229,8 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         model.addAttribute("patient", patientDto);
         model.addAttribute("encounter", encounterDto);
 
-        List<BloodTestedDto> list = bloodTestedService.queryByEncounterId(encounterDto.getId());
-        model.addAttribute("list", list);
+//        List<BloodTestedDto> list = bloodTestedService.queryByEncounterId(encounterDto.getId());
+//        model.addAttribute("list", list);
         return viewRoot + "/detail";
     }
 }

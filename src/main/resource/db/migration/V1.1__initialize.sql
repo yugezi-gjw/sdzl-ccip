@@ -3,11 +3,93 @@
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `patient`
+-- Table structure for `encounter`
 -- ----------------------------
-CREATE TABLE `encounter` (
+CREATE TABLE `patient` (
 `id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '患者表' ,
-`patient_id`  int(11) NOT NULL COMMENT '患者ID，patient表的主键' ,
+`inpatient_id`  varchar(64) NULL COMMENT '住院号' ,
+`outpatient_id`  varchar(64) NULL COMMENT '门诊号' ,
+`patient_name`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '患者姓名',
+`pinyin`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '拼音' ,
+`address`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '地址' ,
+`gender`  varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '性别' ,
+`birth_date`  varchar(16) NULL DEFAULT NULL COMMENT '出生日期' ,
+`national_id`  varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '身份证' ,
+`telephone`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电话' ,
+`telephone2`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电话2' ,
+`smoker`  varchar(8) NULL DEFAULT 0 COMMENT '0否；1是' ,
+`status`  varchar(12) NOT NULL default 'normal' COMMENT 'normal 正常的；deleted 已删除' ,
+`patient_id1`  varchar(64) NULL COMMENT '预留字段 患者ID1' ,
+`patient_id2`  varchar(64) NULL COMMENT '预留字段 患者ID2' ,
+`patient_id3`  varchar(64) NULL COMMENT '预留字段 患者ID3' ,
+`patient_id4`  varchar(64) NULL COMMENT '预留字段 患者ID4' ,
+`bz1`  varchar(128) NULL COMMENT '预留字段' ,
+`bz2`  varchar(128) NULL COMMENT '预留字段' ,
+`bz3`  varchar(128) NULL COMMENT '预留字段' ,
+`bz4`  varchar(256) NULL COMMENT '预留字段' ,
+`bz5`  varchar(256) NULL COMMENT '预留字段' ,
+`created_at`  timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '登记时间' ,
+`created_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人' ,
+`updated_at`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间' ,
+`updated_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人' ,
+`deleted_at`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间' ,
+`deleted_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '删除人' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+;
+
+-- ----------------------------
+-- Table structure for `bodypart`
+-- ----------------------------
+CREATE TABLE `bodypart` (
+`id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '' ,
+`bodypart_code`    varchar(64) NULL COMMENT '部位code' ,
+`bodypart`    varchar(64) NULL COMMENT '部位',
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+;
+
+-- ----------------------------
+-- Records of bodypart
+-- ----------------------------
+
+INSERT INTO `bodypart` VALUES (1, 'chest', '胸部'), (2, 'galactophore', '胸部(乳腺)');
+
+-- ----------------------------
+-- Table structure for `bodypart`
+-- ----------------------------
+CREATE TABLE `treat_course` (
+`id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '' ,
+`patient_id`  int(11) NOT NULL COMMENT '患者表主键id' ,
+`treat_course_id`    varchar(64) NOT NULL COMMENT '业务id' ,
+`bodypart_code`    varchar(64) NULL COMMENT '部位code' ,
+`bodypart`    varchar(64) NULL COMMENT '部位' ,
+`created_at`  timestamp NULL DEFAULT CURRENT_TIMESTAMP ,
+`created_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人' ,
+`updated_at`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间' ,
+`updated_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人' ,
+`deleted_at`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间' ,
+`deleted_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '删除人' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+;
+
+-- ----------------------------
+-- 胸部
+-- Table structure for `treat_course_chest`
+-- ----------------------------
+CREATE TABLE `treat_course_chest` (
+`id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '' ,
+`treat_course_id`    varchar(64) NOT NULL COMMENT 'treat_course业务id' ,
 `age`         varchar(5) NULL COMMENT '年龄' ,
 `stage`       varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分期' ,
 `egfr`        varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'EGFR基因突变' ,
@@ -59,52 +141,12 @@ DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_general_ci
 
 ;
 
-
--- ----------------------------
--- Table structure for `encounter`
--- ----------------------------
-CREATE TABLE `patient` (
-`id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '患者表' ,
-`inpatient_id`  varchar(64) NULL COMMENT '住院号' ,
-`outpatient_id`  varchar(64) NULL COMMENT '门诊号' ,
-`patient_name`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '患者姓名',
-`pinyin`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '拼音' ,
-`address`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '地址' ,
-`gender`  varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '性别' ,
-`birth_date`  varchar(16) NULL DEFAULT NULL COMMENT '出生日期' ,
-`national_id`  varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '身份证' ,
-`telephone`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电话' ,
-`telephone2`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电话2' ,
-`smoker`  varchar(8) NULL DEFAULT 0 COMMENT '0否；1是' ,
-`status`  varchar(12) NOT NULL default 'normal' COMMENT 'normal 正常的；deleted 已删除' ,
-`patient_id1`  varchar(64) NULL COMMENT '预留字段 患者ID1' ,
-`patient_id2`  varchar(64) NULL COMMENT '预留字段 患者ID2' ,
-`patient_id3`  varchar(64) NULL COMMENT '预留字段 患者ID3' ,
-`patient_id4`  varchar(64) NULL COMMENT '预留字段 患者ID4' ,
-`bz1`  varchar(128) NULL COMMENT '预留字段' ,
-`bz2`  varchar(128) NULL COMMENT '预留字段' ,
-`bz3`  varchar(128) NULL COMMENT '预留字段' ,
-`bz4`  varchar(256) NULL COMMENT '预留字段' ,
-`bz5`  varchar(256) NULL COMMENT '预留字段' ,
-`created_at`  timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '登记时间' ,
-`created_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人' ,
-`updated_at`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间' ,
-`updated_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人' ,
-`deleted_at`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '删除时间' ,
-`deleted_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '删除人' ,
-PRIMARY KEY (`id`)
-)
-ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_general_ci
-
-;
-
 -- ----------------------------
 -- Table structure for `blood_tested`
 -- ----------------------------
 CREATE TABLE `blood_tested` (
 `id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '验血结果表' ,
-`encounter_id`  int(11) NOT NULL COMMENT 'encounter的主键id' ,
+`treat_course_id`    varchar(64) NOT NULL COMMENT 'treat_course业务id' ,
 `tested_name`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '检测name' ,
 `white_cells`  varchar(16) DEFAULT NULL COMMENT '白细胞',
 `neutrophil_leucocyte`  varchar(16) NULL DEFAULT NULL COMMENT '中性粒细胞',

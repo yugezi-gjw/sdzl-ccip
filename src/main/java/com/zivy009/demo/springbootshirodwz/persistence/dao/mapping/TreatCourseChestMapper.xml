@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zivy009.demo.springbootshirodwz.persistence.dao.TreatCourseChestMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.zivy009.demo.springbootshirodwz.persistence.model.TreatCourseChest">
+		<id column="id" property="id" />
+		<result column="treat_course_id" property="treatCourseId" />
+		<result column="age" property="age" />
+		<result column="stage" property="stage" />
+		<result column="EGFR" property="EGFR" />
+		<result column="diagnosis_dt" property="diagnosisDt" />
+		<result column="death_dt" property="deathDt" />
+		<result column="last_inpatient_dt" property="lastInpatientDt" />
+		<result column="accurate_os" property="accurateOs" />
+		<result column="alive" property="alive" />
+		<result column="progress_dt" property="progressDt" />
+		<result column="delivered_fraction" property="deliveredFraction" />
+		<result column="treat_type" property="treatType" />
+		<result column="synchronous" property="synchronous" />
+		<result column="metastasis_sites" property="metastasisSites" />
+		<result column="is_multi_sites" property="isMultiSites" />
+		<result column="is_pulmonary_radiation" property="isPulmonaryRadiation" />
+		<result column="pulmonary_metastasis_radiation" property="pulmonaryMetastasisRadiation" />
+		<result column="is_brain_metastases" property="isBrainMetastases" />
+		<result column="is_brain_radiation" property="isBrainRadiation" />
+		<result column="brain_metastasis_radiation" property="brainMetastasisRadiation" />
+		<result column="is_bone_metastases" property="isBoneMetastases" />
+		<result column="is_bone_radiation" property="isBoneRadiation" />
+		<result column="bone_metastasis_radiation" property="boneMetastasisRadiation" />
+		<result column="adrenal_metastasis_radiation" property="adrenalMetastasisRadiation" />
+		<result column="other_metastasis_radiation" property="otherMetastasisRadiation" />
+		<result column="cmd_time_seq" property="cmdTimeSeq" />
+		<result column="cms_time_seq" property="cmsTimeSeq" />
+		<result column="side_reaction" property="sideReaction" />
+		<result column="TKI" property="TKI" />
+		<result column="status" property="status" />
+		<result column="platinum_doublet" property="platinumDoublet" />
+		<result column="gefitinib" property="gefitinib" />
+		<result column="angiostatin" property="angiostatin" />
+		<result column="icotinib" property="icotinib" />
+		<result column="holistic_tx1" property="holisticTx1" />
+		<result column="holistic_tx2" property="holisticTx2" />
+		<result column="holistic_tx3" property="holisticTx3" />
+		<result column="holistic_tx4" property="holisticTx4" />
+		<result column="holistic_tx5" property="holisticTx5" />
+		<result column="holistic_tx6" property="holisticTx6" />
+		<result column="holistic_tx7" property="holisticTx7" />
+
+		<result column="created_at" property="createdAt" />
+		<result column="created_by" property="createdBy" />
+		<result column="updated_at" property="updatedAt" />
+		<result column="updated_by" property="updatedBy" />
+	</resultMap>
+
+</mapper>

@@ -9,7 +9,7 @@ import org.apache.commons.collections.CollectionUtils;
 public class BloodTestedDto {
   private Long id;
 
-  private Long encounterId;
+  private String treatCourseId;
 
   private String testedName;//检测name
 
@@ -39,12 +39,12 @@ public class BloodTestedDto {
     this.id = id;
   }
 
-  public Long getEncounterId() {
-    return encounterId;
+  public String getTreatCourseId() {
+    return treatCourseId;
   }
 
-  public void setEncounterId(Long encounterId) {
-    this.encounterId = encounterId;
+  public void setTreatCourseId(String treatCourseId) {
+    this.treatCourseId = treatCourseId;
   }
 
   public String getTestedName() {
@@ -130,7 +130,7 @@ public class BloodTestedDto {
   public BloodTested toEntity() {
     BloodTested entity = new BloodTested();
     entity.setId(this.getId());
-    entity.setEncounterId(this.getEncounterId());
+    entity.setTreatCourseId(this.getTreatCourseId());
     entity.setTestedName(this.getTestedName());
     entity.setWhiteCells(this.getWhiteCells());
     entity.setNeutrophilLeucocyte(this.getNeutrophilLeucocyte());
@@ -150,7 +150,7 @@ public class BloodTestedDto {
       return dto;
     }
     dto.setId(entity.getId());
-    dto.setEncounterId(entity.getEncounterId());
+    dto.setTreatCourseId(entity.getTreatCourseId());
     dto.setTestedName(entity.getTestedName());
     dto.setWhiteCells(entity.getWhiteCells());
     dto.setNeutrophilLeucocyte(entity.getNeutrophilLeucocyte());

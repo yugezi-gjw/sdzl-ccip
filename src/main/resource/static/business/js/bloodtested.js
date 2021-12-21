@@ -12,7 +12,7 @@ function saveItemCallback(form) {
     // }
     $.ajax({
         type: form.method || 'POST',
-        url:$form.attr("action") + selectedPatientId,
+        url:$form.attr("action"),
         data:$form.serializeArray(),
         dataType:"json",
         cache: false,
@@ -22,23 +22,6 @@ function saveItemCallback(form) {
         error: DWZ.ajaxError
     });
 
-    return false;
-}
-
-function divRefresh(formId, rel) {
-    var $form = $("#" + formId);
-    // if ($form[DWZ.pageInfo.pageNum]) $form[DWZ.pageInfo.pageNum].value = 1;
-    if (rel) {
-        var $box = $("#" + rel);
-        $box.ajaxUrl({
-            type: "POST",
-            url: $form.attr("action") + selectedPatientId,
-            data: $form.serializeArray(),
-            callback: function () {
-                $box.find("[layoutH]").layoutH();
-            }
-        });
-    }
     return false;
 }
 

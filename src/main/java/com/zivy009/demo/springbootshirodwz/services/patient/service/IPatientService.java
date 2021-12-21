@@ -14,6 +14,6 @@ public interface IPatientService extends IService<Patient> {
   int save(PatientDto patientDto);
   int delLogical(Long id);
   int del(Long id);
-  PatientDto selectById(Integer id);
+  PatientDto selectById(Long id);
   int update(PatientDto patientDto);
 }

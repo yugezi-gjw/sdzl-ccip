@@ -5,7 +5,7 @@
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.zivy009.demo.springbootshirodwz.persistence.model.BloodTested">
 		<id column="id" property="id" />
-		<result column="encounter_id" property="encounterId" />
+		<result column="treat_course_id" property="treatCourseId" />
 		<result column="tested_name" property="testedName" />
 		<result column="white_cells" property="whiteCells" />
 		<result column="neutrophil_leucocyte" property="neutrophilLeucocyte" />

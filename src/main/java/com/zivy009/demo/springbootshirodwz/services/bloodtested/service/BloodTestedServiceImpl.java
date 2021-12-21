@@ -23,8 +23,8 @@ public class BloodTestedServiceImpl extends ServiceImpl<BloodTestedMapper, Blood
 
 
   @Override
-  public List<BloodTestedDto> queryByEncounterId(Long encounterId) {
-    List<BloodTested> bloodTestedList = bloodTestedMapper.queryByEncounterId(encounterId);
+  public List<BloodTestedDto> queryByTreatCourseId(String treatCourseId) {
+    List<BloodTested> bloodTestedList = bloodTestedMapper.queryByTreatCourseId(treatCourseId);
     return BloodTestedDto.fromEntityList(bloodTestedList);
   }
 
@@ -43,7 +43,7 @@ public class BloodTestedServiceImpl extends ServiceImpl<BloodTestedMapper, Blood
   }
 
   @Override
-  public BloodTestedDto selectById(Integer id) {
+  public BloodTestedDto selectById(Long id) {
     BloodTested bloodTested = baseMapper.selectById(id);
     return BloodTestedDto.fromEntity(bloodTested);
   }

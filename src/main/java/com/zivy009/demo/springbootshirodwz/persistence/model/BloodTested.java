@@ -16,8 +16,8 @@ public class BloodTested extends Model<BloodTested> implements Serializable {
   @TableId(value="id", type= IdType.AUTO)
   private Long id;
 
-  @TableField("encounter_id")
-  private Long encounterId;
+  @TableField("treat_course_id")
+  private String treatCourseId;
 
   @TableField("tested_name")
   private String testedName;//检测name
@@ -50,12 +50,12 @@ public class BloodTested extends Model<BloodTested> implements Serializable {
     this.id = id;
   }
 
-  public Long getEncounterId() {
-    return encounterId;
+  public String getTreatCourseId() {
+    return treatCourseId;
   }
 
-  public void setEncounterId(Long encounterId) {
-    this.encounterId = encounterId;
+  public void setTreatCourseId(String treatCourseId) {
+    this.treatCourseId = treatCourseId;
   }
 
   public String getTestedName() {
