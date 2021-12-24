@@ -24,3 +24,13 @@ function saveChest(form) {
 function saveGalactophore(form) {
     return saveFormAndRefresh(form, 'galactophoreForm', 'galactophoreDiv');
 }
+
+function changeBodypart(value) {
+    if (value == 'chest') {
+        $("#chestDiv").attr("style", "display: block;");
+        $("#galactophoreDiv").attr("style", "display: none;");
+    } else if (value == 'galactophore') {
+        $("#chestDiv").attr("style", "display: none;");
+        $("#galactophoreDiv").attr("style", "display: block;");
+    }
+}

@@ -3,6 +3,7 @@ package com.zivy009.demo.springbootshirodwz.services.patientrt.controller;
 import com.zivy009.demo.springbootshirodwz.common.PageHandler;
 import com.zivy009.demo.springbootshirodwz.common.http.RequestUtil;
 import com.zivy009.demo.springbootshirodwz.controller.base.BaseController;
+import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.PatientServiceImpl;
 import com.zivy009.demo.springbootshirodwz.services.patient.vo.PatientListVo;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class PatientRTController {
 
         PageHandler page = new PageHandler(pageIndex, pageSize);
         String keyword = RequestUtil.getString(request, "keyword");
-        List<PatientListVo> list = patientService.list(page, keyword);
+        List<PatientDto> list = patientService.list(page, keyword);
 
 //        PatientBillingDto patientBillingDto = new PatientBillingDto();
 //        model.addAttribute("model", patientBillingDto);
@@ -49,7 +50,7 @@ public class PatientRTController {
 
         PageHandler page = new PageHandler(pageIndex, pageSize);
         String keyword = RequestUtil.getString(request, "keyword");
-        List<PatientListVo> list = patientService.list(page, keyword);
+        List<PatientDto> list = patientService.list(page, keyword);
 
 //        PatientBillingDto patientBillingDto = new PatientBillingDto();
 //        model.addAttribute("model", patientBillingDto);

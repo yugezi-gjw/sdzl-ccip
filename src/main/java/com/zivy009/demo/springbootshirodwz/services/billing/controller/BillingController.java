@@ -11,6 +11,7 @@ import com.zivy009.demo.springbootshirodwz.service.impl.TechnicalService;
 import com.zivy009.demo.springbootshirodwz.services.billing.dto.PatientBillingDto;
 import com.zivy009.demo.springbootshirodwz.services.billing.service.IBillingItemService;
 import com.zivy009.demo.springbootshirodwz.services.billing.service.PatientBillingServiceImpl;
+import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.PatientServiceImpl;
 import com.zivy009.demo.springbootshirodwz.services.patient.vo.PatientListVo;
 import java.util.List;
@@ -49,7 +50,7 @@ public class BillingController extends BaseController<PatientBillingServiceImpl>
 
         PageHandler page = new PageHandler(pageIndex, pageSize);
         String keyword = RequestUtil.getString(request, "keyword");
-        List<PatientListVo> list = patientService.list(page, keyword);
+        List<PatientDto> list = patientService.list(page, keyword);
 
         List<BillingItem> billingItemList = billingItemService.queryActiveItems();
 //        PatientDto patient = patientService.queryDtoByPatientId(patientId);

@@ -121,7 +121,8 @@
             </dl>
             <dl>
               <dt>肺转移放疗：</dt>
-              <dd><label>${(treatCourseChest.pulmonaryMetastasisRadiation)!}</label></dd>
+              <dd>
+                <label style="width: 250px;">${(treatCourseChest.pulmonaryMetastasisRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>有无脑转移：</dt>
@@ -149,7 +150,7 @@
             </dl>
             <dl>
               <dt>脑转移放疗：</dt>
-              <dd><label>${(treatCourseChest.brainMetastasisRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.brainMetastasisRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>有无骨转移：</dt>
@@ -177,15 +178,15 @@
             </dl>
             <dl>
               <dt>骨转移放疗：</dt>
-              <dd><label>${(treatCourseChest.boneMetastasisRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.boneMetastasisRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>肾上腺转移放疗：</dt>
-              <dd><label>${(treatCourseChest.adrenalMetastasisRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.adrenalMetastasisRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>其他转移放疗：</dt>
-              <dd><label>${(treatCourseChest.otherMetastasisRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.otherMetastasisRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>胸放与诊断时间时序：</dt>
@@ -261,31 +262,31 @@
             </dl>
             <dl>
               <dt>全身治疗方案1：</dt>
-              <dd><label>${(treatCourseChest.holisticTx1)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.holisticTx1)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案2：</dt>
-              <dd><label>${(treatCourseChest.holisticTx2)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.holisticTx2)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案3：</dt>
-              <dd><label>${(treatCourseChest.holisticTx3)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.holisticTx3)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案4：</dt>
-              <dd><label>${(treatCourseChest.holisticTx4)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.holisticTx4)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案5：</dt>
-              <dd><label>${(treatCourseChest.holisticTx5)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.holisticTx5)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案6：</dt>
-              <dd><label>${(treatCourseChest.holisticTx6)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.holisticTx6)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案7：</dt>
-              <dd><label>${(treatCourseChest.holisticTx7)!}</label></dd>
+              <dd><label style="width: 250px;">${(treatCourseChest.holisticTx7)!}</label></dd>
             </dl>
           </div>
         </div>

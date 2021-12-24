@@ -1,90 +1,87 @@
 package com.zivy009.demo.springbootshirodwz.services.patient.dto;
 
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
+import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.BodypartEnum;
+import org.apache.commons.lang3.StringUtils;
+
 public class PatientAdvSearchDto {
 
+  /** 基本查询条件*/
   private String inpatientId;
-
   private String patientName;
-
   private String gender;
-
   private String nationalId;
 
+  /** 不同部位共有查询条件 **/
   private String stage;//分期
-
-  private String egfr;//EGFR基因突变
-
   private String diagnosisDt;//准确诊断日期
-
   private String deathDt;//准确死亡日期
-
   private String lastInpatientDt;//最近一次住院
-
   private String accurateOs;//准确OS
-
   private String alive;//生存状态:0死亡；1生存
-
   private String progressDt;//进展时间
-
   private String deliveredFraction;//放疗次数
-
-  private String treatType;//靶向先为1，放疗先为2，同步为0
-
-  private String synchronous;//是否同步
-
   private String metastasisSites;//放疗转移部位数量
-
   private String isMultiSites;//是否为多部位放疗:0否；1是
-
-  private String isPulmonaryRadiation;//有无肺部放疗:0无；1有
-
-  private String pulmonaryMetastasisRadiation;//肺转移放疗
-
   private String isBrainMetastases;//有无脑转移:0无；1有
-
   private String isBrainRadiation;//有无脑放疗:0无；1有
-
   private String brainMetastasisRadiation;//脑转移放疗
-
   private String isBoneMetastases;//有无骨转移:0无；1有
-
   private String isBoneRadiation;//有无骨放疗:0无；1有
-
   private String boneMetastasisRadiation;//骨转移放疗
-
   private String adrenalMetastasisRadiation;//肾上腺转移放疗
-
   private String otherMetastasisRadiation;//其他转移放疗
+  private String holisticTx1;//全身治疗方案1
+  private String holisticTx2;//全身治疗方案2
+  private String holisticTx3;//全身治疗方案3
+  private String holisticTx4; //全身治疗方案4
+  private String holisticTx5; //全身治疗方案5
+  private String holisticTx6;  //全身治疗方案6
+  private String holisticTx7; //全身治疗方案7
 
+  private String bodypart;
+
+  /** Chest查询条件 */
+  private String egfr;//EGFR基因突变
+  private String treatType;//靶向先为1，放疗先为2，同步为0
+  private String synchronous;//是否同步
+  private String isPulmonaryRadiation;//有无肺部放疗:0无；1有
+  private String pulmonaryMetastasisRadiation;//肺转移放疗
   private String cmdTimeSeq;//胸部放疗与诊断时间时序
-
   private String cmsTimeSeq;//胸部放疗与系统治疗时序
-
   private String sideReaction;//放射性副反应
-
   private String tki;//TKI是否为一线用药
-
   private String platinumDoublet;//Platinum doublet
-
   private String gefitinib;//是否用吉非替尼
-
   private String angiostatin;//是否用厄洛替尼
-
   private String icotinib;//是否用埃克替尼
 
-  private String holisticTx1;//全身治疗方案1
+  /**Galactophore查询条件 */
+  private String menarcheAge;//初潮年龄
+  private String amenorrheaAge;//闭经年龄
+  private String molecularSubtyping;//分子分型
+  private String er;//ER
+  private String pr;//PR
+  private String her2;//Her-2
+  private String ki67;//Ki-67
+  private String surgeryMode;//手术方式
+  private String fishAugmentation;//FISH扩增
+  private String geneticTest;//基因检测（21基因/70基因/50基因）
+  private String steepGrade;//STEEP评分
+  private String isGalactophoreRadiation;//有无胸壁/乳腺放疗:0无；1有
+  private String galactophoreRadiation;//胸壁放疗时间、范围及剂量
+  private String her2Drug;//是否用抗Her-2药物
+  private String incretion;//是否用内分泌
+  private String immunized;//是否用免疫
 
-  private String holisticTx2;//全身治疗方案2
+  public String getBodypart() {
+    return bodypart;
+  }
 
-  private String holisticTx3;//全身治疗方案3
-
-  private String holisticTx4; //全身治疗方案4
-
-  private String holisticTx5; //全身治疗方案5
-
-  private String holisticTx6;  //全身治疗方案6
-
-  private String holisticTx7; //全身治疗方案7
+  public void setBodypart(String bodypart) {
+    this.bodypart = bodypart;
+  }
 
   public String getInpatientId() {
     return inpatientId;
@@ -420,5 +417,160 @@ public class PatientAdvSearchDto {
 
   public void setHolisticTx7(String holisticTx7) {
     this.holisticTx7 = holisticTx7;
+  }
+
+  public String getMenarcheAge() {
+    return menarcheAge;
+  }
+
+  public void setMenarcheAge(String menarcheAge) {
+    this.menarcheAge = menarcheAge;
+  }
+
+  public String getAmenorrheaAge() {
+    return amenorrheaAge;
+  }
+
+  public void setAmenorrheaAge(String amenorrheaAge) {
+    this.amenorrheaAge = amenorrheaAge;
+  }
+
+  public String getMolecularSubtyping() {
+    return molecularSubtyping;
+  }
+
+  public void setMolecularSubtyping(String molecularSubtyping) {
+    this.molecularSubtyping = molecularSubtyping;
+  }
+
+  public String getEr() {
+    return er;
+  }
+
+  public void setEr(String er) {
+    this.er = er;
+  }
+
+  public String getPr() {
+    return pr;
+  }
+
+  public void setPr(String pr) {
+    this.pr = pr;
+  }
+
+  public String getHer2() {
+    return her2;
+  }
+
+  public void setHer2(String her2) {
+    this.her2 = her2;
+  }
+
+  public String getKi67() {
+    return ki67;
+  }
+
+  public void setKi67(String ki67) {
+    this.ki67 = ki67;
+  }
+
+  public String getSurgeryMode() {
+    return surgeryMode;
+  }
+
+  public void setSurgeryMode(String surgeryMode) {
+    this.surgeryMode = surgeryMode;
+  }
+
+  public String getFishAugmentation() {
+    return fishAugmentation;
+  }
+
+  public void setFishAugmentation(String fishAugmentation) {
+    this.fishAugmentation = fishAugmentation;
+  }
+
+  public String getGeneticTest() {
+    return geneticTest;
+  }
+
+  public void setGeneticTest(String geneticTest) {
+    this.geneticTest = geneticTest;
+  }
+
+  public String getSteepGrade() {
+    return steepGrade;
+  }
+
+  public void setSteepGrade(String steepGrade) {
+    this.steepGrade = steepGrade;
+  }
+
+  public String getIsGalactophoreRadiation() {
+    return isGalactophoreRadiation;
+  }
+
+  public void setIsGalactophoreRadiation(String isGalactophoreRadiation) {
+    this.isGalactophoreRadiation = isGalactophoreRadiation;
+  }
+
+  public String getGalactophoreRadiation() {
+    return galactophoreRadiation;
+  }
+
+  public void setGalactophoreRadiation(String galactophoreRadiation) {
+    this.galactophoreRadiation = galactophoreRadiation;
+  }
+
+  public String getHer2Drug() {
+    return her2Drug;
+  }
+
+  public void setHer2Drug(String her2Drug) {
+    this.her2Drug = her2Drug;
+  }
+
+  public String getIncretion() {
+    return incretion;
+  }
+
+  public void setIncretion(String incretion) {
+    this.incretion = incretion;
+  }
+
+  public String getImmunized() {
+    return immunized;
+  }
+
+  public void setImmunized(String immunized) {
+    this.immunized = immunized;
+  }
+
+  public boolean isSearchByChest() {
+    if (StringUtils.equalsIgnoreCase(BodypartEnum.chest.name(), this.getBodypart())) {
+      return isNotEmpty(this.getEgfr()) || isNotEmpty(this.getTreatType()) ||
+          isNotEmpty(this.getSynchronous()) || isNotEmpty(this.getIsPulmonaryRadiation()) ||
+          isNotEmpty(this.getPulmonaryMetastasisRadiation()) || isNotEmpty(this.getCmdTimeSeq()) ||
+          isNotEmpty(this.getCmsTimeSeq()) || isNotEmpty(this.getSideReaction()) ||
+          isNotEmpty(this.getTki()) || isNotEmpty(this.getPlatinumDoublet()) ||
+          isNotEmpty(this.getGefitinib()) || isNotEmpty(this.getAngiostatin()) ||
+          isNotEmpty(this.getIcotinib());
+    }
+    return false;
+  }
+
+  public boolean isSearchByGalactophore() {
+    if (StringUtils.equalsIgnoreCase(BodypartEnum.galactophore.name(), this.getBodypart())) {
+      return isNotEmpty(this.getMenarcheAge()) || isNotEmpty(this.getAmenorrheaAge()) ||
+          isNotEmpty(this.getMolecularSubtyping()) || isNotEmpty(this.getEr()) ||
+          isNotEmpty(this.getPr()) || isNotEmpty(this.getHer2()) ||
+          isNotEmpty(this.getKi67()) || isNotEmpty(this.getSurgeryMode()) ||
+          isNotEmpty(this.getFishAugmentation()) || isNotEmpty(this.getGeneticTest()) ||
+          isNotEmpty(this.getSteepGrade()) || isNotEmpty(this.getIsGalactophoreRadiation()) ||
+          isNotEmpty(this.getGalactophoreRadiation()) || isNotEmpty(this.getHer2Drug()) ||
+          isNotEmpty(this.getIncretion()) || isNotEmpty(this.getImmunized());
+    }
+    return false;
   }
 }

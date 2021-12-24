@@ -41,7 +41,7 @@
       <div>
         <div layoutH="146" style="float:left; display:block; overflow:auto; width:240px; border:solid 1px #CCC; line-height:21px; background:#fff">
           <ul class="tree treeFolder">
-            <li><a href="javascript">部位</a>
+            <li><a href="javascript">病种</a>
               <ul>
                   <#list list as treatcourse>
                   <li><a href="treatcourse/bodypart?treatCourseId=${(treatcourse.treatCourseId)!}" target="ajax" rel="treatcourseBox">${(treatcourse.bodypart)!}</a></li>

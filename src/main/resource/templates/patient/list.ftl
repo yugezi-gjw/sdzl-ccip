@@ -26,7 +26,7 @@
 		</table>
 		<div class="subBar">
 			<ul>
-				<li><a class="button" href="patient/adv_search" target="dialog" mask="true" title="查询框"><span>高级检索</span></a></li>
+				<li><a class="button" href="patient/adv_search" target="dialog" mask="true" title="查询框" width="850" height="620"><span>高级检索</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -46,7 +46,7 @@
 			</@shiro.hasPermission>
 			<li class="line">line</li>
 			<@shiro.hasPermission name="patient:upd">
-				<li><a class="add" href="treatcourse/add?patientId={sid}" target="dialog" rel="save"><span>添加部位</span></a></li>
+				<li><a class="add" href="treatcourse/add?patientId={sid}" target="dialog" rel="save"><span>添加病种</span></a></li>
 			</@shiro.hasPermission>
 <#--			<@shiro.hasPermission name="patient:upd">-->
 <#--				<li><a class="edit" href="encounter/upd?patientId={sid}" target="dialog"><span>修改就诊信息</span></a></li>-->

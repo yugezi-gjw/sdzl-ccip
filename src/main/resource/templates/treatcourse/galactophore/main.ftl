@@ -141,7 +141,7 @@
             </dl>
             <dl>
               <dt>胸壁放疗时间、范围及剂量：</dt>
-              <dd><label>${(dto.galactophoreRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.galactophoreRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>有无脑转移：</dt>
@@ -169,7 +169,7 @@
             </dl>
             <dl>
               <dt>脑转移放疗：</dt>
-              <dd><label>${(dto.brainMetastasisRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.brainMetastasisRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>有无骨转移：</dt>
@@ -197,7 +197,7 @@
             </dl>
             <dl>
               <dt>骨转移放疗：</dt>
-              <dd><label>${(dto.boneMetastasisRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.boneMetastasisRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>有无肝转移：</dt>
@@ -213,11 +213,11 @@
             </dl>
             <dl>
               <dt>肾上腺转移放疗：</dt>
-              <dd><label>${(dto.adrenalMetastasisRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.adrenalMetastasisRadiation)!}</label></dd>
             </dl>
             <dl>
               <dt>其他转移放疗：</dt>
-              <dd><label>${(dto.otherMetastasisRadiation)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.otherMetastasisRadiation)!}</label></dd>
             </dl>
               <dl>
                 <dt>是否用抗Her-2药物：</dt>
@@ -257,31 +257,31 @@
               </dl>
             <dl>
               <dt>全身治疗方案1：</dt>
-              <dd><label>${(dto.holisticTx1)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.holisticTx1)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案2：</dt>
-              <dd><label>${(dto.holisticTx2)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.holisticTx2)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案3：</dt>
-              <dd><label>${(dto.holisticTx3)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.holisticTx3)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案4：</dt>
-              <dd><label>${(dto.holisticTx4)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.holisticTx4)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案5：</dt>
-              <dd><label>${(dto.holisticTx5)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.holisticTx5)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案6：</dt>
-              <dd><label>${(dto.holisticTx6)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.holisticTx6)!}</label></dd>
             </dl>
             <dl>
               <dt>全身治疗方案7：</dt>
-              <dd><label>${(dto.holisticTx7)!}</label></dd>
+              <dd><label style="width: 250px;">${(dto.holisticTx7)!}</label></dd>
             </dl>
           </div>
         </div>

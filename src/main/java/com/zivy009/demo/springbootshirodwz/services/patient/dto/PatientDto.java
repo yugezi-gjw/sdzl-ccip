@@ -1,8 +1,11 @@
 package com.zivy009.demo.springbootshirodwz.services.patient.dto;
 
-import com.zivy009.demo.springbootshirodwz.persistence.model.Encounter;
+import com.zivy009.demo.springbootshirodwz.common.tools.StringUtil;
 import com.zivy009.demo.springbootshirodwz.persistence.model.Patient;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.PatientServiceImpl;
+import java.util.Map;
+import java.util.Objects;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class PatientDto {
@@ -125,11 +128,6 @@ public class PatientDto {
     return p;
   }
 
-  public Encounter toEncounter() {
-    Encounter encounter = new Encounter();
-    return encounter;
-  }
-
   public PatientDto fromPatientEntity(Patient patient) {
     this.setId(patient.getId());
     this.setInpatientId(patient.getInpatientId());
@@ -144,14 +142,41 @@ public class PatientDto {
     return this;
   }
 
-  public PatientDto fromEncounterEntity(Encounter encounter) {
-//    this.setEncounterId(encounter.getId());
-//    this.setPhysician(encounter.getPhysician());
-//    this.setPhysicist(encounter.getPhysicist());
-//    this.setOutpatientRoom(encounter.getOutpatientRoom());
-//    this.setDiagnosis(encounter.getDiagnosis());
-//    this.setPrescription(encounter.getPrescription());
-//    this.setTechnical(encounter.getTechnical());
-    return this;
+  public static PatientDto fromMap(Map<String, Object> mapper) {
+    PatientDto dto = new PatientDto();
+    if (Objects.isNull(mapper) || mapper.isEmpty()) {
+      return dto;
+    }
+    mapper.entrySet().forEach(entry -> {
+      if (StringUtil.equals(entry.getKey(), "id")) {
+        Integer id = (Integer) entry.getValue();
+        dto.setId(Objects.nonNull(id) ? id.longValue() : null);
+      } else if (StringUtil.equals(entry.getKey(), "patient_name")) {
+        dto.setPatientName((String) entry.getValue());
+      } else if (StringUtil.equals(entry.getKey(), "inpatient_id")) {
+        dto.setInpatientId((String) entry.getValue());
+      } else if (StringUtil.equals(entry.getKey(), "gender")) {
+        String genderCode = (String) entry.getValue();
+        if (StringUtils.isNotEmpty(genderCode)) {
+          dto.setGender(StringUtils.equals("1", genderCode) ? "男" : "女");
+        }
+      } else if (StringUtil.equals(entry.getKey(), "national_id")) {
+        dto.setNationalId((String) entry.getValue());
+      }
+      else if (StringUtil.equals(entry.getKey(), "birth_date")) {
+        dto.setBirthDate((String) entry.getValue());
+      }
+      else if (StringUtil.equals(entry.getKey(), "telephone")) {
+        dto.setTelephone((String) entry.getValue());
+      }
+      else if (StringUtil.equals(entry.getKey(), "telephone2")) {
+        dto.setTelephone2((String) entry.getValue());
+      }
+      else if (StringUtil.equals(entry.getKey(), "smoker")) {
+        dto.setSmoker((String) entry.getValue());
+      }
+    });
+    return dto;
   }
+
 }

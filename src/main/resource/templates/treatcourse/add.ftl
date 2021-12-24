@@ -20,8 +20,8 @@
 			<dl>
 				<dt>部位：</dt>
 				<dd>
-					<select style="margin-right:3px; font-size: 12px; width: 212px; padding: 2px 2px 2px 2px" name="bodypartCode" value="${(model.bodypartCode)!}">
-						<option value="chest" selected>胸部</option>
+					<select style="margin-right:3px; font-size: 12px; width: 130px; padding: 2px 2px 2px 2px" name="bodypartCode" value="${(model.bodypartCode)!}">
+						<option value="chest" selected>肺</option>
 						<option value="galactophore">乳腺</option>
 					</select>
 				</dd>

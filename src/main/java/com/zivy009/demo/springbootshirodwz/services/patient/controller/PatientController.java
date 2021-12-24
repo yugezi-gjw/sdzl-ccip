@@ -42,15 +42,15 @@ public class PatientController extends BaseController<PatientServiceImpl> {
             @RequestParam(value = "numPerPage", defaultValue = "5") int pageSize) {
 
         PageHandler page = new PageHandler(pageIndex, pageSize);
-        List<PatientListVo> list = new ArrayList<>();
+        List<PatientDto> list = new ArrayList<>();
         String keyword = RequestUtil.getString(request, "keyword");
         PatientAdvSearchDto searchParam = null;
-//        if (Objects.isNull(keyword)) {
-//            searchParam = getParamFromRequest(request);
-//            list = baseService.list(page, searchParam);
-//        } else {
+        if (Objects.isNull(keyword)) {
+            searchParam = getParamFromRequest(request);
+            list = baseService.list(page, searchParam);
+        } else {
             list = baseService.list(page, keyword);
-//        }
+        }
 
         model.addAttribute("page", page);
         model.addAttribute("list", list);
@@ -63,8 +63,8 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         String inpatientId = RequestUtil.getString(request, "inpatientId");
         String gender = RequestUtil.getString(request, "gender");
         String nationalId = RequestUtil.getString(request, "nationalId");
+
         String stage = RequestUtil.getString(request, "stage");
-        String egfr = RequestUtil.getString(request, "egfr");
         String diagnosisDt = RequestUtil.getString(request, "diagnosisDt");
         String deathDt = RequestUtil.getString(request, "deathDt");
         String lastInpatientDt = RequestUtil.getString(request, "lastInpatientDt");
@@ -72,12 +72,8 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         String alive = RequestUtil.getString(request, "alive");
         String progressDt = RequestUtil.getString(request, "progressDt");
         String deliveredFraction = RequestUtil.getString(request, "deliveredFraction");
-        String treatType = RequestUtil.getString(request, "treatType");
-        String synchronous = RequestUtil.getString(request, "synchronous");
         String metastasisSites = RequestUtil.getString(request, "metastasisSites");
         String isMultiSites = RequestUtil.getString(request, "isMultiSites");
-        String isPulmonaryRadiation = RequestUtil.getString(request, "isPulmonaryRadiation");
-        String pulmonaryMetastasisRadiation = RequestUtil.getString(request, "pulmonaryMetastasisRadiation");
         String isBrainMetastases = RequestUtil.getString(request, "isBrainMetastases");
         String isBrainRadiation = RequestUtil.getString(request, "isBrainRadiation");
         String brainMetastasisRadiation = RequestUtil.getString(request, "brainMetastasisRadiation");
@@ -86,6 +82,21 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         String boneMetastasisRadiation = RequestUtil.getString(request, "boneMetastasisRadiation");
         String adrenalMetastasisRadiation = RequestUtil.getString(request, "adrenalMetastasisRadiation");
         String otherMetastasisRadiation = RequestUtil.getString(request, "otherMetastasisRadiation");
+        String holisticTx1 = RequestUtil.getString(request, "holisticTx1");
+        String holisticTx2 = RequestUtil.getString(request, "holisticTx2");
+        String holisticTx3 = RequestUtil.getString(request, "holisticTx3");
+        String holisticTx4 = RequestUtil.getString(request, "holisticTx4");
+        String holisticTx5 = RequestUtil.getString(request, "holisticTx5");
+        String holisticTx6 = RequestUtil.getString(request, "holisticTx6");
+        String holisticTx7 = RequestUtil.getString(request, "holisticTx7");
+
+        String bodypart = RequestUtil.getString(request, "bodypart");
+
+        String egfr = RequestUtil.getString(request, "egfr");
+        String treatType = RequestUtil.getString(request, "treatType");
+        String synchronous = RequestUtil.getString(request, "synchronous");
+        String isPulmonaryRadiation = RequestUtil.getString(request, "isPulmonaryRadiation");
+        String pulmonaryMetastasisRadiation = RequestUtil.getString(request, "pulmonaryMetastasisRadiation");
         String cmdTimeSeq = RequestUtil.getString(request, "cmdTimeSeq");
         String cmsTimeSeq = RequestUtil.getString(request, "cmsTimeSeq");
         String sideReaction = RequestUtil.getString(request, "sideReaction");
@@ -94,13 +105,6 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         String gefitinib = RequestUtil.getString(request, "gefitinib");
         String angiostatin = RequestUtil.getString(request, "angiostatin");
         String icotinib = RequestUtil.getString(request, "icotinib");
-        String holisticTx1 = RequestUtil.getString(request, "holisticTx1");
-        String holisticTx2 = RequestUtil.getString(request, "holisticTx2");
-        String holisticTx3 = RequestUtil.getString(request, "holisticTx3");
-        String holisticTx4 = RequestUtil.getString(request, "holisticTx4");
-        String holisticTx5 = RequestUtil.getString(request, "holisticTx5");
-        String holisticTx6 = RequestUtil.getString(request, "holisticTx6");
-        String holisticTx7 = RequestUtil.getString(request, "holisticTx7");
 
         PatientAdvSearchDto dto = new PatientAdvSearchDto();
         dto.setPatientName(patientName);
@@ -145,6 +149,8 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         dto.setHolisticTx5(holisticTx5);
         dto.setHolisticTx6(holisticTx6);
         dto.setHolisticTx7(holisticTx7);
+
+        dto.setBodypart(bodypart);
         return dto;
     }
 

@@ -59,7 +59,7 @@ DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_general_ci
 -- Records of bodypart
 -- ----------------------------
 
-INSERT INTO `bodypart` VALUES (1, 'chest', '胸部'), (2, 'galactophore', '胸部(乳腺)');
+INSERT INTO `bodypart` VALUES (1, 'chest', '肺'), (2, 'galactophore', '乳腺');
 
 -- ----------------------------
 -- Table structure for `bodypart`
@@ -68,8 +68,8 @@ CREATE TABLE `treat_course` (
 `id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '' ,
 `patient_id`  int(11) NOT NULL COMMENT '患者表主键id' ,
 `treat_course_id`    varchar(64) NOT NULL COMMENT '业务id' ,
-`bodypart_code`    varchar(64) NULL COMMENT '部位code' ,
-`bodypart`    varchar(64) NULL COMMENT '部位' ,
+`bodypart_code`    varchar(64) NULL COMMENT '病种code' ,
+`bodypart`    varchar(64) NULL COMMENT '病种' ,
 `created_at`  timestamp NULL DEFAULT CURRENT_TIMESTAMP ,
 `created_by`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人' ,
 `updated_at`  timestamp NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间' ,

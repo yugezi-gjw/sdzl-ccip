@@ -9,8 +9,8 @@ import com.zivy009.demo.springbootshirodwz.services.patient.vo.PatientListVo;
 import java.util.List;
 
 public interface IPatientService extends IService<Patient> {
-  List<PatientListVo> list(PageHandler page, String keyword);
-  List<PatientListVo> list(PageHandler page, PatientAdvSearchDto dto);
+  List<PatientDto> list(PageHandler page, String keyword);
+  List<PatientDto> list(PageHandler page, PatientAdvSearchDto dto);
   int save(PatientDto patientDto);
   int delLogical(Long id);
   int del(Long id);
