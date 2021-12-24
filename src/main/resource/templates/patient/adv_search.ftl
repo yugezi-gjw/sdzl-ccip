@@ -231,7 +231,7 @@
         </dl>
       </div>
 
-      <div id="chestDiv" class="pageFormContent" style="display: block;">
+      <div id="chestAdvDiv" class="pageFormContent" style="display: block;">
         <dl>
           <dt>EGFR基因突变：</dt>
           <dd>
@@ -354,7 +354,7 @@
         </dl>
       </div>
 
-      <div id="galactophoreDiv" class="pageFormContent" style="display: none;">
+      <div id="galactophoreAdvDiv" class="pageFormContent" style="display: none;">
         <dl>
           <dt>初潮年龄：</dt>
           <dd>

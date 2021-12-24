@@ -27,10 +27,10 @@ function saveGalactophore(form) {
 
 function changeBodypart(value) {
     if (value == 'chest') {
-        $("#chestDiv").attr("style", "display: block;");
-        $("#galactophoreDiv").attr("style", "display: none;");
+        $("#chestAdvDiv").show();
+        $("#galactophoreAdvDiv").hide();
     } else if (value == 'galactophore') {
-        $("#chestDiv").attr("style", "display: none;");
-        $("#galactophoreDiv").attr("style", "display: block;");
+        $("#chestAdvDiv").hide();
+        $("#galactophoreAdvDiv").show();
     }
 }

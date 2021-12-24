@@ -251,7 +251,7 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
         tmpSql.append(" and tcc.is_brain_radiation = '").append(dto.getIsBrainRadiation()).append("'");
       }
       if (isNotEmpty(dto.getBrainMetastasisRadiation())) {
-        tmpSql.append(" and tcc.brain_metastasis_radiation like '%").append(dto.getAccurateOs()).append("%'");
+        tmpSql.append(" and tcc.brain_metastasis_radiation like '%").append(dto.getBrainMetastasisRadiation()).append("%'");
       }
       if (isNotEmpty(dto.getIsBoneMetastases())) {
         tmpSql.append(" and tcc.is_bone_metastases = '").append(dto.getIsBoneMetastases()).append("'");
@@ -328,7 +328,7 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
         tmpSql.append(" and tcg.is_brain_radiation = '").append(dto.getIsBrainRadiation()).append("'");
       }
       if (isNotEmpty(dto.getBrainMetastasisRadiation())) {
-        tmpSql.append(" and tcg.brain_metastasis_radiation like '%").append(dto.getAccurateOs()).append("%'");
+        tmpSql.append(" and tcg.brain_metastasis_radiation like '%").append(dto.getBrainMetastasisRadiation()).append("%'");
       }
       if (isNotEmpty(dto.getIsBoneMetastases())) {
         tmpSql.append(" and tcg.is_bone_metastases = '").append(dto.getIsBoneMetastases()).append("'");
