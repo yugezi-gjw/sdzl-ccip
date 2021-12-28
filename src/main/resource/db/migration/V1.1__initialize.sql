@@ -48,6 +48,7 @@ CREATE TABLE `bodypart` (
 `id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '' ,
 `bodypart_code`    varchar(64) NULL COMMENT '部位code' ,
 `bodypart`    varchar(64) NULL COMMENT '部位',
+`status`  varchar(12) NOT NULL default 'active' COMMENT 'active/inactive' ,
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
@@ -59,7 +60,7 @@ DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_general_ci
 -- Records of bodypart
 -- ----------------------------
 
-INSERT INTO `bodypart` VALUES (1, 'chest', '肺'), (2, 'galactophore', '乳腺');
+INSERT INTO `bodypart` VALUES (1, 'chest', '肺', 'active'), (2, 'galactophore', '乳腺', 'active'), (3, 'esophagus', '食管', 'active'), (4, 'thymus', '胸腺', 'active');
 
 -- ----------------------------
 -- Table structure for `bodypart`

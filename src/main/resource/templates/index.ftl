@@ -85,8 +85,8 @@
               debug: true,	// 调试模式 【true|false】
               callback: function () {
                   initEnv();
-
                   $("#themeList").theme({themeBase: "${ctx.contextPath}/dwz/themes/"}); // themeBase 相对于index页面的主题base路径
+                  setTimeout(function() {$("#sidebar .toggleCollapse div").trigger("click");}, 10);
               }
           });
       });
@@ -118,22 +118,27 @@
       </div>
     </div>
     <div id="sidebar">
-      <div class="toggleCollapse"><h2>患者随访管理</h2>
-        <div>收缩</div>
-      </div>
+<#--      <div class="toggleCollapse"><h2>患者随访管理</h2>-->
+<#--        <div>收缩</div>-->
+<#--      </div>-->
 
       <div class="accordion" fillSpace="sidebar">
         <div class="accordionHeader">
-          <h2><span>Folder</span>主菜单</h2>
+          <h2><span>Folder</span>患者随访管理</h2>
         </div>
         <div class="accordionContent">
           <ul class="tree treeFolder">
-              <#--							<@shiro.hasPermission name="base:list">-->
-              <#--								<li><a href="demo/list" target="navTab" rel="demo">demo</a></li>-->
-              <#--							</@shiro.hasPermission>-->
-              <@shiro.hasPermission name="base:list">
-                <li><a href="patient/list" target="navTab" rel="patient">患者信息管理</a></li>
-              </@shiro.hasPermission>
+<#--              <@shiro.hasPermission name="base:list">-->
+<#--                <li><a href="patient/list" target="navTab" rel="patient">患者信息管理</a></li>-->
+<#--              </@shiro.hasPermission>-->
+            <li>
+              <a>病种</a>
+              <ul>
+                  <#list list as bodypart>
+                    <li><a href="patient/bodypart/${(bodypart.bodypartCode)!}" target="navTab" rel="${(bodypart.bodypartCode)!}">${(bodypart.bodypart)!}</a></li>
+                  </#list>
+              </ul>
+            </li>
 <#--              <@shiro.hasRole name="admin">-->
 <#--                <li>-->
 <#--                  <a>系统管理</a>-->

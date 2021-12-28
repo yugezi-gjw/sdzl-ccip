@@ -1,4 +1,33 @@
 <div class="pageContent">
+  <div class="panel" defH="70">
+    <h1>病人基本信息</h1>
+    <div class="pageContent">
+      <div class="pageFormContent">
+        <p>
+          <label>姓    名：</label>
+          <label style="font-weight: bold; font-size: x-large">${(patient.patientName)!}</label>
+        </p>
+        <p>
+          <label>住 院 号：</label>
+          <label style="font-weight: bold; font-size: x-large">${(patient.inpatientId)!}</label>
+        </p>
+        <p>
+          <label>性    别：</label>
+          <label>
+              <#if patient.gender == "1">
+                男
+              <#else>
+                女
+              </#if>
+          </label>
+        </p>
+        <p>
+          <label>身 份 证：</label>
+          <label>${(patient.nationalId)!}</label>
+        </p>
+      </div>
+    </div>
+  </div>
   <div class="tabs">
     <div class="tabsHeader">
       <div class="tabsHeaderContent">

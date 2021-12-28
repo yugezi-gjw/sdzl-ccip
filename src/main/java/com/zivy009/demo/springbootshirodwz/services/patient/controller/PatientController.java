@@ -13,14 +13,17 @@ import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientAdvSearch
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.PatientServiceImpl;
 import com.zivy009.demo.springbootshirodwz.services.patient.vo.PatientListVo;
+import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.BodypartEnum;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,6 +59,32 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         model.addAttribute("list", list);
         model.addAttribute("keyword", keyword);
         return viewRoot + "/list";
+    }
+
+    @RequestMapping("/bodypart/{code}")
+    @RequiresPermissions("base:list")
+    protected String listByBodypart(Model model, HttpServletRequest request,
+            @PathVariable(value = "code") String code,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageIndex,
+            @RequestParam(value = "numPerPage", defaultValue = "5") int pageSize) {
+
+        PageHandler page = new PageHandler(pageIndex, pageSize);
+        List<PatientListVo> list = new ArrayList<>();
+        String keyword = RequestUtil.getString(request, "keyword");
+        PatientAdvSearchDto searchParam = null;
+        if (Objects.isNull(keyword)) {
+            searchParam = getParamFromRequest(request);
+            list = baseService.list(code, page, searchParam);
+        } else {
+            list = baseService.list(code, page, keyword);
+        }
+
+        model.addAttribute("page", page);
+        model.addAttribute("list", list);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("bodypartCode", code);
+
+        return viewRoot + "/list_by_bodypart";
     }
 
     private PatientAdvSearchDto getParamFromRequest(HttpServletRequest request) {
@@ -106,6 +135,23 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         String angiostatin = RequestUtil.getString(request, "angiostatin");
         String icotinib = RequestUtil.getString(request, "icotinib");
 
+        String menarcheAge = RequestUtil.getString(request, "menarcheAge");//初潮年龄
+        String amenorrheaAge = RequestUtil.getString(request, "amenorrheaAge");//闭经年龄
+        String molecularSubtyping = RequestUtil.getString(request, "molecularSubtyping");//分子分型
+        String er = RequestUtil.getString(request, "er");//ER
+        String pr = RequestUtil.getString(request, "pr");//PR
+        String her2 = RequestUtil.getString(request, "her2");//Her-2
+        String ki67 = RequestUtil.getString(request, "ki67");//Ki-67
+        String surgeryMode = RequestUtil.getString(request, "surgeryMode");//手术方式
+        String fishAugmentation = RequestUtil.getString(request, "fishAugmentation");//FISH扩增
+        String geneticTest = RequestUtil.getString(request, "geneticTest");//基因检测（21基因/70基因/50基因）
+        String steepGrade = RequestUtil.getString(request, "steepGrade");//STEEP评分
+        String isGalactophoreRadiation = RequestUtil.getString(request, "isGalactophoreRadiation");//有无胸壁/乳腺放疗:0无；1有
+        String galactophoreRadiation = RequestUtil.getString(request, "galactophoreRadiation");//胸壁放疗时间、范围及剂量
+        String her2Drug = RequestUtil.getString(request, "her2Drug");//是否用抗Her-2药物
+        String incretion = RequestUtil.getString(request, "incretion");//是否用内分泌
+        String immunized = RequestUtil.getString(request, "immunized");//是否用免疫
+
         PatientAdvSearchDto dto = new PatientAdvSearchDto();
         dto.setPatientName(patientName);
         dto.setInpatientId(inpatientId);
@@ -150,6 +196,23 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         dto.setHolisticTx6(holisticTx6);
         dto.setHolisticTx7(holisticTx7);
 
+        dto.setMenarcheAge(menarcheAge);
+        dto.setAmenorrheaAge(amenorrheaAge);
+        dto.setMolecularSubtyping(molecularSubtyping);
+        dto.setEr(er);
+        dto.setPr(pr);
+        dto.setHer2(her2);
+        dto.setKi67(ki67);
+        dto.setSurgeryMode(surgeryMode);
+        dto.setFishAugmentation(fishAugmentation);
+        dto.setGeneticTest(geneticTest);
+        dto.setSteepGrade(steepGrade);
+        dto.setIsGalactophoreRadiation(isGalactophoreRadiation);
+        dto.setGalactophoreRadiation(galactophoreRadiation);
+        dto.setHer2Drug(her2Drug);
+        dto.setIncretion(incretion);
+        dto.setImmunized(immunized);
+
         dto.setBodypart(bodypart);
         return dto;
     }
@@ -161,10 +224,39 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         return viewRoot + "/add";
     }
 
+    @RequestMapping("/add_by_bodypart")
+    @RequiresPermissions("patient:add")
+    String add_by_bodypart(Model model, HttpServletRequest request, @RequestParam(value = "code") String code) {
+        PatientDto patientDto = new PatientDto();
+        patientDto.setBodypart(code);
+        model.addAttribute("model", patientDto);
+        return viewRoot + "/add_by_bodypart";
+    }
+
     @RequestMapping("/adv_search")
     @RequiresPermissions("base:list")
     String adv_search(Model model, HttpServletRequest request) {
         model.addAttribute("model", null);
+        return viewRoot + "/adv_search";
+    }
+
+    @RequestMapping("/{code}/adv_search")
+    @RequiresPermissions("base:list")
+    String adv_search_by_code(Model model, HttpServletRequest request, @PathVariable(value = "code") String code) {
+        model.addAttribute("model", null);
+        model.addAttribute("bodypartCode", code);
+        if (StringUtils.equalsIgnoreCase(code, BodypartEnum.chest.name())) {
+            return "treatcourse/chest/adv_search";
+        }
+        else if (StringUtils.equalsIgnoreCase(code, BodypartEnum.galactophore.name())) {
+            return "treatcourse/galactophore/adv_search";
+        }
+        else if (StringUtils.equalsIgnoreCase(code, BodypartEnum.thymus.name())) {
+            return "treatcourse/galactophore/adv_search";
+        }
+        else if (StringUtils.equalsIgnoreCase(code, BodypartEnum.esophagus.name())) {
+            return "treatcourse/galactophore/adv_search";
+        }
         return viewRoot + "/adv_search";
     }
 

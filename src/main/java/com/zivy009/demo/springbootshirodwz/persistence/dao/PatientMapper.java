@@ -8,6 +8,6 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface PatientMapper extends BaseMapper<Patient> {
-  @Select("SELECT * FROM patient where inpatient_id = #{patientId}")
-  Patient queryByPatientId(String patientId);
+  @Select("SELECT * FROM patient where inpatient_id = #{inpatientId}")
+  Patient queryByInpatientId(String inpatientId);
 }

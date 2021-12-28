@@ -10,6 +10,7 @@ import com.zivy009.demo.springbootshirodwz.services.bloodtested.service.IBloodTe
 import com.zivy009.demo.springbootshirodwz.services.encounter.dto.EncounterDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.IPatientService;
+import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.AbstractBodypartDto;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.BodypartEnum;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.ChestDto;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.GalactophoreDto;
@@ -19,6 +20,7 @@ import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.IGalacto
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.ITreatCourseService;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.TreatCourseServiceImpl;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
@@ -114,20 +116,37 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
     }
 
     @RequestMapping("/detail")
-    String detail(Model model, HttpServletRequest request, @RequestParam(value = "patientId", defaultValue = "0") Long patientId) {
-        PatientDto patientDto = null;
-        if (patientId != 0) {
-            patientDto = patientService.selectById(patientId);
-        } else {
-            throw new MyRuntimeException("");
+    String detail(Model model, HttpServletRequest request, @RequestParam(value = "treatCourseId") String treatCourseId) {
+
+        TreatCourseDto treatCourseDto = treatCourseService.selectByTreatCourseId(treatCourseId);
+        PatientDto patientDto = patientService.selectById(treatCourseDto.getPatientId());
+        List<BloodTestedDto> bloodTestedDtoList = bloodTestedService
+            .queryByTreatCourseId(treatCourseId);
+
+        AbstractBodypartDto dto = null;
+        String view = viewRoot;
+        if (StringUtils.equalsIgnoreCase(treatCourseDto.getBodypartCode(), BodypartEnum.chest.name())) {
+            dto = chestService.selectByTreatCourseId(treatCourseId);
+            if (StringUtils.isEmpty(dto.getTreatCourseId())) {
+                dto.setTreatCourseId(treatCourseId);
+            }
+            view += "/chest/main";
+        } else if (StringUtils.equalsIgnoreCase(treatCourseDto.getBodypartCode(), BodypartEnum.galactophore.name())) {
+            dto = galactophoreService.selectByTreatCourseId(treatCourseId);
+            if (StringUtils.isEmpty(dto.getTreatCourseId())) {
+                dto.setTreatCourseId(treatCourseId);
+            }
+            view += "/galactophore/main";
+        } else if (StringUtils.equalsIgnoreCase(treatCourseDto.getBodypartCode(), BodypartEnum.esophagus.name())) {
+            view += "/esophagus/main";
+        } else if (StringUtils.equalsIgnoreCase(treatCourseDto.getBodypartCode(), BodypartEnum.thymus.name())) {
+            view += "/thymus/main";
         }
 
-        List<TreatCourseDto> treatCourseDtoList = treatCourseService.selectByPatientId(patientId);
-
         model.addAttribute("patient", patientDto);
-        model.addAttribute("list", treatCourseDtoList);
-
-        return viewRoot + "/detail";
+        model.addAttribute("dto", dto);
+        model.addAttribute("list", bloodTestedDtoList);
+        return view;
     }
 
     @RequestMapping("/bodypart")

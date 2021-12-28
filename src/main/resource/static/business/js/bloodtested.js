@@ -1,8 +1,3 @@
-let selectedPatientId;
-
-function viewDetail(patientId) {
-    selectedPatientId = patientId;
-}
 
 function saveItemCallback(form) {
     let $form = $(form);

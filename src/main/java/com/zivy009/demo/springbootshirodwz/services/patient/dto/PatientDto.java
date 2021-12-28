@@ -2,11 +2,10 @@ package com.zivy009.demo.springbootshirodwz.services.patient.dto;
 
 import com.zivy009.demo.springbootshirodwz.common.tools.StringUtil;
 import com.zivy009.demo.springbootshirodwz.persistence.model.Patient;
-import com.zivy009.demo.springbootshirodwz.services.patient.service.PatientServiceImpl;
+import com.zivy009.demo.springbootshirodwz.persistence.model.TreatCourse;
 import java.util.Map;
 import java.util.Objects;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class PatientDto {
 
@@ -29,6 +28,8 @@ public class PatientDto {
   private String smoker;
 
   private String status;
+
+  private String bodypart;
 
   public Long getId() {
     return id;
@@ -110,8 +111,13 @@ public class PatientDto {
     this.status = status;
   }
 
-  @Autowired
-  private PatientServiceImpl patientService;
+  public String getBodypart() {
+    return bodypart;
+  }
+
+  public void setBodypart(String bodypart) {
+    this.bodypart = bodypart;
+  }
 
   public Patient toPatient() {
     Patient p = new Patient();

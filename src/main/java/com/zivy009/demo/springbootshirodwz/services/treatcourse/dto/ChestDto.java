@@ -3,11 +3,7 @@ package com.zivy009.demo.springbootshirodwz.services.treatcourse.dto;
 import com.zivy009.demo.springbootshirodwz.persistence.model.TreatCourseChest;
 import java.util.Objects;
 
-public class ChestDto {
-
-  private Long id;
-
-  private String treatCourseId;
+public class ChestDto extends AbstractBodypartDto {
 
   private String age;//年龄
 
@@ -88,22 +84,6 @@ public class ChestDto {
   private String holisticTx6;  //全身治疗方案6
 
   private String holisticTx7; //全身治疗方案7
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getTreatCourseId() {
-    return treatCourseId;
-  }
-
-  public void setTreatCourseId(String treatCourseId) {
-    this.treatCourseId = treatCourseId;
-  }
 
   public String getAge() {
     return age;
