@@ -368,6 +368,46 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
       sql.WHERE("tcc.holistic_tx7 like #{paramMap.holistic_tx7}");
       map.put("holistic_tx7", "%" + dto.getHolisticTx7() + "%");
     }
+    if (isNotEmpty(dto.getBackup1())) {
+      sql.WHERE("tcc.backup1 like #{paramMap.backup1}");
+      map.put("backup1", "%" + dto.getBackup1() + "%");
+    }
+    if (isNotEmpty(dto.getBackup2())) {
+      sql.WHERE("tcc.backup2 like #{paramMap.backup2}");
+      map.put("backup2", "%" + dto.getBackup2() + "%");
+    }
+    if (isNotEmpty(dto.getBackup3())) {
+      sql.WHERE("tcc.backup3 like #{paramMap.backup3}");
+      map.put("backup3", "%" + dto.getBackup3() + "%");
+    }
+    if (isNotEmpty(dto.getBackup4())) {
+      sql.WHERE("tcc.backup4 like #{paramMap.backup4}");
+      map.put("backup4", "%" + dto.getBackup4() + "%");
+    }
+    if (isNotEmpty(dto.getBackup5())) {
+      sql.WHERE("tcc.backup5 like #{paramMap.backup5}");
+      map.put("backup5", "%" + dto.getBackup5() + "%");
+    }
+    if (isNotEmpty(dto.getBackup6())) {
+      sql.WHERE("tcc.backup6 like #{paramMap.backup6}");
+      map.put("backup6", "%" + dto.getBackup6() + "%");
+    }
+    if (isNotEmpty(dto.getBackup7())) {
+      sql.WHERE("tcc.backup7 like #{paramMap.backup7}");
+      map.put("backup7", "%" + dto.getBackup7() + "%");
+    }
+    if (isNotEmpty(dto.getBackup8())) {
+      sql.WHERE("tcc.backup8 like #{paramMap.backup8}");
+      map.put("backup8", "%" + dto.getBackup8() + "%");
+    }
+    if (isNotEmpty(dto.getBackup9())) {
+      sql.WHERE("tcc.backup9 like #{paramMap.backup9}");
+      map.put("backup9", "%" + dto.getBackup9() + "%");
+    }
+    if (isNotEmpty(dto.getBackup10())) {
+      sql.WHERE("tcc.backup10 like #{paramMap.backup10}");
+      map.put("backup10", "%" + dto.getBackup10() + "%");
+    }
     if (isNotEmpty(dto.getPatientName())) {
       sql.WHERE("patient_name like #{paramMap.patient_name}");
       map.put("patient_name", "%" + dto.getPatientName() + "%");

@@ -56,6 +56,17 @@
 		<result column="created_by" property="createdBy" />
 		<result column="updated_at" property="updatedAt" />
 		<result column="updated_by" property="updatedBy" />
+
+		<result column="backup1" property="backup1" />
+		<result column="backup2" property="backup2" />
+		<result column="backup3" property="backup3" />
+		<result column="backup4" property="backup4" />
+		<result column="backup5" property="backup5" />
+		<result column="backup6" property="backup6" />
+		<result column="backup7" property="backup7" />
+		<result column="backup8" property="backup8" />
+		<result column="backup9" property="backup9" />
+		<result column="backup10" property="backup10" />
 	</resultMap>
 
 </mapper>

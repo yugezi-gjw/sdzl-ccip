@@ -258,3 +258,43 @@
   <dt>全身治疗方案7：</dt>
   <dd><label style="width: 250px;">${(dto.holisticTx7)!}</label></dd>
 </dl>
+<dl>
+  <dt>备用字段1：</dt>
+  <dd><label style="width: 250px;">${(dto.backup1)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段2：</dt>
+  <dd><label style="width: 250px;">${(dto.backup2)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段3：</dt>
+  <dd><label style="width: 250px;">${(dto.backup3)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段4：</dt>
+  <dd><label style="width: 250px;">${(dto.backup4)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段5：</dt>
+  <dd><label style="width: 250px;">${(dto.backup5)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段6：</dt>
+  <dd><label style="width: 250px;">${(dto.backup6)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段7：</dt>
+  <dd><label style="width: 250px;">${(dto.backup7)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段8：</dt>
+  <dd><label style="width: 250px;">${(dto.backup8)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段9：</dt>
+  <dd><label style="width: 250px;">${(dto.backup9)!}</label></dd>
+</dl>
+<dl>
+  <dt>备用字段10：</dt>
+  <dd><label style="width: 250px;">${(dto.backup10)!}</label></dd>
+</dl>

@@ -166,3 +166,43 @@
     <dt>全身治疗方案7：</dt>
     <dd><label style="width: 250px;">${(treatCourseChest.holisticTx7)!}</label></dd>
   </dl>
+  <dl>
+    <dt>备用字段1：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup1)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段2：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup2)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段3：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup3)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段4：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup4)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段5：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup5)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段6：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup6)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段7：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup7)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段8：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup8)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段9：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup9)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>备用字段10：</dt>
+    <dd><label style="width: 250px;">${(treatCourseChest.backup10)!}</label></dd>
+  </dl>

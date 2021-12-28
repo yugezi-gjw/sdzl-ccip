@@ -118,6 +118,16 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         String holisticTx5 = RequestUtil.getString(request, "holisticTx5");
         String holisticTx6 = RequestUtil.getString(request, "holisticTx6");
         String holisticTx7 = RequestUtil.getString(request, "holisticTx7");
+        String backup1 = RequestUtil.getString(request, "backup1");
+        String backup2 = RequestUtil.getString(request, "backup2");
+        String backup3 = RequestUtil.getString(request, "backup3");
+        String backup4 = RequestUtil.getString(request, "backup4");
+        String backup5 = RequestUtil.getString(request, "backup5");
+        String backup6 = RequestUtil.getString(request, "backup6");
+        String backup7 = RequestUtil.getString(request, "backup7");
+        String backup8 = RequestUtil.getString(request, "backup8");
+        String backup9 = RequestUtil.getString(request, "backup9");
+        String backup10 = RequestUtil.getString(request, "backup10");
 
         String bodypart = RequestUtil.getString(request, "bodypart");
 
@@ -195,6 +205,16 @@ public class PatientController extends BaseController<PatientServiceImpl> {
         dto.setHolisticTx5(holisticTx5);
         dto.setHolisticTx6(holisticTx6);
         dto.setHolisticTx7(holisticTx7);
+        dto.setBackup1(backup1);
+        dto.setBackup2(backup2);
+        dto.setBackup3(backup3);
+        dto.setBackup4(backup4);
+        dto.setBackup5(backup5);
+        dto.setBackup6(backup6);
+        dto.setBackup7(backup7);
+        dto.setBackup8(backup8);
+        dto.setBackup9(backup9);
+        dto.setBackup10(backup10);
 
         dto.setMenarcheAge(menarcheAge);
         dto.setAmenorrheaAge(amenorrheaAge);

@@ -334,7 +334,46 @@
 				<dt>全身治疗方案7：</dt>
 				<dd><input name="holisticTx7" type="text" value="${(model.holisticTx7)!}"/></dd>
 			</dl>
-
+			<dl>
+				<dt>备用字段1：</dt>
+				<dd><input name="backup1" type="text" value="${(model.backup1)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段2：</dt>
+				<dd><input name="backup2" type="text" value="${(model.backup2)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段3：</dt>
+				<dd><input name="backup3" type="text" value="${(model.backup3)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段4：</dt>
+				<dd><input name="backup4" type="text" value="${(model.backup4)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段5：</dt>
+				<dd><input name="backup5" type="text" value="${(model.backup5)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段6：</dt>
+				<dd><input name="backup6" type="text" value="${(model.backup6)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段7：</dt>
+				<dd><input name="backup7" type="text" value="${(model.backup7)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段8：</dt>
+				<dd><input name="backup8" type="text" value="${(model.backup8)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段9：</dt>
+				<dd><input name="backup9" type="text" value="${(model.backup9)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>备用字段10：</dt>
+				<dd><input name="backup10" type="text" value="${(model.backup10)!}"/></dd>
+			</dl>
 		</div>
 	</div>
 </form>

@@ -462,6 +462,16 @@ public class ChestDto extends AbstractBodypartDto {
     dto.setAngiostatin(treatCourseChest.getAngiostatin());
     dto.setBoneMetastasisRadiation(treatCourseChest.getBoneMetastasisRadiation());
     dto.setBrainMetastasisRadiation(treatCourseChest.getBrainMetastasisRadiation());
+    dto.setBackup1(treatCourseChest.getBackup1());
+    dto.setBackup2(treatCourseChest.getBackup2());
+    dto.setBackup3(treatCourseChest.getBackup3());
+    dto.setBackup4(treatCourseChest.getBackup4());
+    dto.setBackup5(treatCourseChest.getBackup5());
+    dto.setBackup6(treatCourseChest.getBackup6());
+    dto.setBackup7(treatCourseChest.getBackup7());
+    dto.setBackup8(treatCourseChest.getBackup8());
+    dto.setBackup9(treatCourseChest.getBackup9());
+    dto.setBackup10(treatCourseChest.getBackup10());
     dto.setCmdTimeSeq(treatCourseChest.getCmdTimeSeq());
     dto.setCmsTimeSeq(treatCourseChest.getCmsTimeSeq());
     dto.setDeathDt(treatCourseChest.getDeathDt());
@@ -509,6 +519,16 @@ public class ChestDto extends AbstractBodypartDto {
     treatCourseChest.setAngiostatin(this.getAngiostatin());
     treatCourseChest.setBoneMetastasisRadiation(this.getBoneMetastasisRadiation());
     treatCourseChest.setBrainMetastasisRadiation(this.getBrainMetastasisRadiation());
+    treatCourseChest.setBackup1(backup1);
+    treatCourseChest.setBackup2(backup2);
+    treatCourseChest.setBackup3(backup3);
+    treatCourseChest.setBackup4(backup4);
+    treatCourseChest.setBackup5(backup5);
+    treatCourseChest.setBackup6(backup6);
+    treatCourseChest.setBackup7(backup7);
+    treatCourseChest.setBackup8(backup8);
+    treatCourseChest.setBackup9(backup9);
+    treatCourseChest.setBackup10(backup10);
     treatCourseChest.setCmdTimeSeq(this.getCmdTimeSeq());
     treatCourseChest.setCmsTimeSeq(this.getCmsTimeSeq());
     treatCourseChest.setDeathDt(this.getDeathDt());
@@ -544,6 +564,7 @@ public class ChestDto extends AbstractBodypartDto {
     treatCourseChest.setSynchronous(this.getSynchronous());
     treatCourseChest.setTki(this.getTki());
     treatCourseChest.setTreatType(this.getTreatType());
+    
     return treatCourseChest;
   }
 
