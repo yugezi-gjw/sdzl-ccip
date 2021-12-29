@@ -307,33 +307,33 @@
 				</dd>
 			</dl>
 			<dl>
-				<dt>全身治疗方案1：</dt>
-				<dd><input name="holisticTx1" type="text" value="${(model.holisticTx1)!}"/></dd>
+				<dt>全身治疗方案：</dt>
+				<dd><input name="holisticTx" type="text" value="${(model.holisticTx)!}"/></dd>
 			</dl>
-			<dl>
-				<dt>全身治疗方案2：</dt>
-				<dd><input name="holisticTx2" type="text" value="${(model.holisticTx2)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>全身治疗方案3：</dt>
-				<dd><input name="holisticTx3" type="text" value="${(model.holisticTx3)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>全身治疗方案4：</dt>
-				<dd><input name="holisticTx4" type="text" value="${(model.holisticTx4)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>全身治疗方案5：</dt>
-				<dd><input name="holisticTx5" type="text" value="${(model.holisticTx5)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>全身治疗方案6：</dt>
-				<dd><input name="holisticTx6" type="text" value="${(model.holisticTx6)!}"/></dd>
-			</dl>
-			<dl>
-				<dt>全身治疗方案7：</dt>
-				<dd><input name="holisticTx7" type="text" value="${(model.holisticTx7)!}"/></dd>
-			</dl>
+<#--			<dl>-->
+<#--				<dt>全身治疗方案2：</dt>-->
+<#--				<dd><input name="holisticTx2" type="text" value="${(model.holisticTx2)!}"/></dd>-->
+<#--			</dl>-->
+<#--			<dl>-->
+<#--				<dt>全身治疗方案3：</dt>-->
+<#--				<dd><input name="holisticTx3" type="text" value="${(model.holisticTx3)!}"/></dd>-->
+<#--			</dl>-->
+<#--			<dl>-->
+<#--				<dt>全身治疗方案4：</dt>-->
+<#--				<dd><input name="holisticTx4" type="text" value="${(model.holisticTx4)!}"/></dd>-->
+<#--			</dl>-->
+<#--			<dl>-->
+<#--				<dt>全身治疗方案5：</dt>-->
+<#--				<dd><input name="holisticTx5" type="text" value="${(model.holisticTx5)!}"/></dd>-->
+<#--			</dl>-->
+<#--			<dl>-->
+<#--				<dt>全身治疗方案6：</dt>-->
+<#--				<dd><input name="holisticTx6" type="text" value="${(model.holisticTx6)!}"/></dd>-->
+<#--			</dl>-->
+<#--			<dl>-->
+<#--				<dt>全身治疗方案7：</dt>-->
+<#--				<dd><input name="holisticTx7" type="text" value="${(model.holisticTx7)!}"/></dd>-->
+<#--			</dl>-->
 			<dl>
 				<dt>备用字段1：</dt>
 				<dd><input name="backup1" type="text" value="${(model.backup1)!}"/></dd>

@@ -340,33 +340,27 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
       sql.WHERE("tcc.other_metastasis_radiation like #{paramMap.other_metastasis_radiation}");
       map.put("other_metastasis_radiation", "%" + dto.getOtherMetastasisRadiation() + "%");
     }
-    if (isNotEmpty(dto.getHolisticTx1())) {
+    if (isNotEmpty(dto.getHolisticTx())) {
       sql.WHERE("tcc.holistic_tx1 like #{paramMap.holistic_tx1}");
-      map.put("holistic_tx1", "%" + dto.getHolisticTx1() + "%");
-    }
-    if (isNotEmpty(dto.getHolisticTx2())) {
+      map.put("holistic_tx1", "%" + dto.getHolisticTx() + "%");
+      sql.OR();
       sql.WHERE("tcc.holistic_tx2 like #{paramMap.holistic_tx2}");
-      map.put("holistic_tx2", "%" + dto.getHolisticTx2() + "%");
-    }
-    if (isNotEmpty(dto.getHolisticTx3())) {
+      map.put("holistic_tx2", "%" + dto.getHolisticTx() + "%");
+      sql.OR();
       sql.WHERE("tcc.holistic_tx3 like #{paramMap.holistic_tx3}");
-      map.put("holistic_tx3", "%" + dto.getHolisticTx3() + "%");
-    }
-    if (isNotEmpty(dto.getHolisticTx4())) {
+      map.put("holistic_tx3", "%" + dto.getHolisticTx() + "%");
+      sql.OR();
       sql.WHERE("tcc.holistic_tx4 like #{paramMap.holistic_tx4}");
-      map.put("holistic_tx4", "%" + dto.getHolisticTx4() + "%");
-    }
-    if (isNotEmpty(dto.getHolisticTx5())) {
+      map.put("holistic_tx4", "%" + dto.getHolisticTx() + "%");
+      sql.OR();
       sql.WHERE("tcc.holistic_tx5 like #{paramMap.holistic_tx5}");
-      map.put("holistic_tx5", "%" + dto.getHolisticTx5() + "%");
-    }
-    if (isNotEmpty(dto.getHolisticTx6())) {
+      map.put("holistic_tx5", "%" + dto.getHolisticTx() + "%");
+      sql.OR();
       sql.WHERE("tcc.holistic_tx6 like #{paramMap.holistic_tx6}");
-      map.put("holistic_tx6", "%" + dto.getHolisticTx6() + "%");
-    }
-    if (isNotEmpty(dto.getHolisticTx7())) {
+      map.put("holistic_tx6", "%" + dto.getHolisticTx() + "%");
+      sql.OR();
       sql.WHERE("tcc.holistic_tx7 like #{paramMap.holistic_tx7}");
-      map.put("holistic_tx7", "%" + dto.getHolisticTx7() + "%");
+      map.put("holistic_tx7", "%" + dto.getHolisticTx() + "%");
     }
     if (isNotEmpty(dto.getBackup1())) {
       sql.WHERE("tcc.backup1 like #{paramMap.backup1}");
@@ -650,27 +644,6 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
         tmpSql.append(" and tcc.other_metastasis_radiation like '%")
             .append(dto.getOtherMetastasisRadiation()).append("%'");
       }
-      if (isNotEmpty(dto.getHolisticTx1())) {
-        tmpSql.append(" and tcc.holistic_tx1 like '%").append(dto.getHolisticTx1()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx2())) {
-        tmpSql.append(" and tcc.holistic_tx2 like '%").append(dto.getHolisticTx2()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx3())) {
-        tmpSql.append(" and tcc.holistic_tx3 like '%").append(dto.getHolisticTx3()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx4())) {
-        tmpSql.append(" and tcc.holistic_tx4 like '%").append(dto.getHolisticTx4()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx5())) {
-        tmpSql.append(" and tcc.holistic_tx5 like '%").append(dto.getHolisticTx5()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx6())) {
-        tmpSql.append(" and tcc.holistic_tx6 like '%").append(dto.getHolisticTx6()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx7())) {
-        tmpSql.append(" and tcc.holistic_tx7 like '%").append(dto.getHolisticTx7()).append("%'");
-      }
       tmpSql.append(" union all");
       tmpSql.append(
           " select p.* from patient p left join treat_course tc on p.id = tc.patient_id left join treat_course_galactophore tcg on tc.treat_course_id=tcg.treat_course_id where 1=1");
@@ -737,27 +710,6 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
       if (isNotEmpty(dto.getOtherMetastasisRadiation())) {
         tmpSql.append(" and tcg.other_metastasis_radiation like '%")
             .append(dto.getOtherMetastasisRadiation()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx1())) {
-        tmpSql.append(" and tcg.holistic_tx1 like '%").append(dto.getHolisticTx1()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx2())) {
-        tmpSql.append(" and tcg.holistic_tx2 like '%").append(dto.getHolisticTx2()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx3())) {
-        tmpSql.append(" and tcg.holistic_tx3 like '%").append(dto.getHolisticTx3()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx4())) {
-        tmpSql.append(" and tcg.holistic_tx4 like '%").append(dto.getHolisticTx4()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx5())) {
-        tmpSql.append(" and tcg.holistic_tx5 like '%").append(dto.getHolisticTx5()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx6())) {
-        tmpSql.append(" and tcg.holistic_tx6 like '%").append(dto.getHolisticTx6()).append("%'");
-      }
-      if (isNotEmpty(dto.getHolisticTx7())) {
-        tmpSql.append(" and tcg.holistic_tx7 like '%").append(dto.getHolisticTx7()).append("%'");
       }
 
       tmpSql.append(" ) tmp) tmp2");

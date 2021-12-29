@@ -32,13 +32,13 @@ public class PatientAdvSearchDto {
   private String boneMetastasisRadiation;//骨转移放疗
   private String adrenalMetastasisRadiation;//肾上腺转移放疗
   private String otherMetastasisRadiation;//其他转移放疗
-  private String holisticTx1;//全身治疗方案1
-  private String holisticTx2;//全身治疗方案2
-  private String holisticTx3;//全身治疗方案3
-  private String holisticTx4; //全身治疗方案4
-  private String holisticTx5; //全身治疗方案5
-  private String holisticTx6;  //全身治疗方案6
-  private String holisticTx7; //全身治疗方案7
+  private String holisticTx;//全身治疗方案
+//  private String holisticTx2;//全身治疗方案2
+//  private String holisticTx3;//全身治疗方案3
+//  private String holisticTx4; //全身治疗方案4
+//  private String holisticTx5; //全身治疗方案5
+//  private String holisticTx6;  //全身治疗方案6
+//  private String holisticTx7; //全身治疗方案7
   private String backup1;
   private String backup2;
   private String backup3;
@@ -84,6 +84,14 @@ public class PatientAdvSearchDto {
   private String her2Drug;//是否用抗Her-2药物
   private String incretion;//是否用内分泌
   private String immunized;//是否用免疫
+
+  public String getHolisticTx() {
+    return holisticTx;
+  }
+
+  public void setHolisticTx(String holisticTx) {
+    this.holisticTx = holisticTx;
+  }
 
   public String getBodypart() {
     return bodypart;
@@ -371,62 +379,6 @@ public class PatientAdvSearchDto {
 
   public void setIcotinib(String icotinib) {
     this.icotinib = icotinib;
-  }
-
-  public String getHolisticTx1() {
-    return holisticTx1;
-  }
-
-  public void setHolisticTx1(String holisticTx1) {
-    this.holisticTx1 = holisticTx1;
-  }
-
-  public String getHolisticTx2() {
-    return holisticTx2;
-  }
-
-  public void setHolisticTx2(String holisticTx2) {
-    this.holisticTx2 = holisticTx2;
-  }
-
-  public String getHolisticTx3() {
-    return holisticTx3;
-  }
-
-  public void setHolisticTx3(String holisticTx3) {
-    this.holisticTx3 = holisticTx3;
-  }
-
-  public String getHolisticTx4() {
-    return holisticTx4;
-  }
-
-  public void setHolisticTx4(String holisticTx4) {
-    this.holisticTx4 = holisticTx4;
-  }
-
-  public String getHolisticTx5() {
-    return holisticTx5;
-  }
-
-  public void setHolisticTx5(String holisticTx5) {
-    this.holisticTx5 = holisticTx5;
-  }
-
-  public String getHolisticTx6() {
-    return holisticTx6;
-  }
-
-  public void setHolisticTx6(String holisticTx6) {
-    this.holisticTx6 = holisticTx6;
-  }
-
-  public String getHolisticTx7() {
-    return holisticTx7;
-  }
-
-  public void setHolisticTx7(String holisticTx7) {
-    this.holisticTx7 = holisticTx7;
   }
 
   public String getMenarcheAge() {
