@@ -1,16 +1,19 @@
 
-<form method="post" action="patient/bodypart/${(bodypartCode)!}" class="pageForm" onsubmit="return navTabSearch(this);">
+
+<form id="advForm" method="post" action="patient/bodypart/${(bodypartCode)!}" class="pageForm" onsubmit="return navTabSearch(this);">
 	<div class="formBar">
 		<ul>
-			<li><button type="submit" class="buttonActive">开始检索</button></li>
+			<li><button type="button" onclick="clickSearch('${(bodypartCode)!}')" class="buttonActive">开始检索</button></li>
 			<li><button type="reset">清空重输</button></li>
+			<li><button type="button" onclick="clickExp('${(bodypartCode)!}')">导出</button></li>
+			<li><a id="exp" type="button" href="excel/${(bodypartCode)!}/exp" onclick="clickExp('${(bodypartCode)!}')">导出</a></li>
 		</ul>
 	</div>
 	<div class="pageContent">
 		<div class="pageFormContent" layoutH="56">
 			<dl>
 				<dt>分期：</dt>
-				<dd><input name="stage" type="text" value="${(model.stage)!}"/></dd>
+				<dd><input id="stage" name="stage" type="text" value="${(model.stage)!}"/></dd>
 			</dl>
 			<dl>
 				<dt>EGFR基因突变：</dt>

@@ -34,3 +34,29 @@ function changeBodypart(value) {
         $("#galactophoreAdvDiv").show();
     }
 }
+
+function clickSearch(code) {
+    let url = "patient/bodypart/" + code
+    $("#advForm").removeAttr('action');
+    $("#advForm").removeAttr('class');
+    $("#advForm").removeAttr('onsubmit');
+    $("#advForm").attr('action', url);
+    $("#advForm").attr('class', "pageForm");
+    $("#advForm").attr('onsubmit', "return navTabSearch(this);");
+    $("#advForm").submit();
+}
+
+// function clickExp(code) {
+//     let s = $("#stage").val();
+//     let hrefv = 'excel/' + code + '/exp?stage=' + s;
+//     $("#exp").attr('href', hrefv);
+//     $("#exp").submit();
+// }
+function clickExp(code) {
+    let url = "excel/" + code + "/exp"
+    $("#advForm").removeAttr('action');
+    $("#advForm").removeAttr('class');
+    $("#advForm").removeAttr('onsubmit');
+    $("#advForm").attr('action', url);
+    $("#advForm").submit();
+}
