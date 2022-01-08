@@ -1,7 +1,10 @@
 package com.zivy009.demo.springbootshirodwz.services.treatcourse.dto;
 
-public abstract class AbstractBodypartDto {
-  protected Long id;
+import com.zivy009.demo.springbootshirodwz.services.multiprimary.dto.MultiPrimaryDto;
+import com.zivy009.demo.springbootshirodwz.services.treathistory.dto.TreatHistoryDto;
+import java.util.List;
+
+public abstract class AbstractBodypartDto extends AbstractDto {
 
   protected String treatCourseId;
 
@@ -16,13 +19,8 @@ public abstract class AbstractBodypartDto {
   protected String backup9;
   protected String backup10;
 
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
+  protected List<MultiPrimaryDto> multiPrimaryList; //多原发
+  protected List<TreatHistoryDto> treatHistoryList; //治疗
 
   public String getTreatCourseId() {
     return treatCourseId;
@@ -110,5 +108,23 @@ public abstract class AbstractBodypartDto {
 
   public void setBackup10(String backup10) {
     this.backup10 = backup10;
+  }
+
+  public List<MultiPrimaryDto> getMultiPrimaryList() {
+    return multiPrimaryList;
+  }
+
+  public void setMultiPrimaryList(
+      List<MultiPrimaryDto> multiPrimaryList) {
+    this.multiPrimaryList = multiPrimaryList;
+  }
+
+  public List<TreatHistoryDto> getTreatHistoryList() {
+    return treatHistoryList;
+  }
+
+  public void setTreatHistoryList(
+      List<TreatHistoryDto> treatHistoryList) {
+    this.treatHistoryList = treatHistoryList;
   }
 }

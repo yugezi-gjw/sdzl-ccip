@@ -86,7 +86,7 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     // 1.得到记录集
     Map<String, Object> map = new HashMap<String, Object>();
     MysqlGenerateSQL sql = new MysqlGenerateSQL();
-    sql.SELECT("p.*, tc.bodypart_code, tc.bodypart, tc.treat_course_id");
+    sql.SELECT(" DISTINCT p.*, tc.bodypart_code, tc.bodypart, tc.treat_course_id");
     sql.FROM(tableName);
     sql.WHERE("p.status!='deleted'");
     sql.INNER_JOIN("treat_course tc on p.id = tc.patient_id");
@@ -127,11 +127,13 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     Map<String, Object> map = new HashMap<String, Object>();
     MysqlGenerateSQL sql = new MysqlGenerateSQL();
 
+    sql.SELECT(" DISTINCT p.*, tc.bodypart_code, tc.bodypart, tc.treat_course_id");
+    sql.FROM(tableName);
+    sql.WHERE("p.status!='deleted'");
+    sql.INNER_JOIN("treat_course tc on p.id = tc.patient_id");
+    sql.LEFT_OUTER_JOIN("multi_primary mp on tc.treat_course_id=mp.treat_course_id");
+    sql.LEFT_OUTER_JOIN("treat_history th on tc.treat_course_id=th.treat_course_id");
     if (StringUtils.equalsIgnoreCase(bodypart, BodypartEnum.chest.name())) {
-      sql.SELECT("p.*, tc.bodypart_code, tc.bodypart, tc.treat_course_id");
-      sql.FROM(tableName);
-      sql.WHERE("p.status!='deleted'");
-      sql.INNER_JOIN("treat_course tc on p.id = tc.patient_id");
       sql.LEFT_OUTER_JOIN("treat_course_chest tcc on tc.treat_course_id=tcc.treat_course_id");
       sql.WHERE("tc.bodypart_code = 'chest'");
       if (isNotEmpty(dto.getEgfr())) {
@@ -190,12 +192,8 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
       }
     }
     else if (StringUtils.equalsIgnoreCase(bodypart, BodypartEnum.galactophore.name())) {
-      sql.SELECT("p.*, tc.bodypart_code, tc.bodypart, tc.treat_course_id");
-      sql.FROM(tableName);
-      sql.INNER_JOIN("treat_course tc on p.id = tc.patient_id");
       sql.LEFT_OUTER_JOIN(
           "treat_course_galactophore tcc on tc.treat_course_id=tcc.treat_course_id");
-      sql.WHERE("p.status!='deleted'");
       sql.WHERE("tc.bodypart_code = 'galactophore'");
       if (isNotEmpty(dto.getMenarcheAge())) {
         sql.WHERE("tcc.menarche_age = #{paramMap.menarche_age}");
@@ -417,6 +415,22 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     if (isNotEmpty(dto.getNationalId())) {
       sql.WHERE("national_id = #{paramMap.national_id}");
       map.put("national_id", dto.getNationalId());
+    }
+    if (isNotEmpty(dto.getMultiPrimary())) {
+      sql.WHERE("mp.primary like #{paramMap.primary}");
+      map.put("primary", "%" + dto.getMultiPrimary() + "%");
+    }
+    if (isNotEmpty(dto.getMultiPrimaryBodypart())) {
+      sql.WHERE("mp.bodypart like #{paramMap.bodypart}");
+      map.put("bodypart", "%" + dto.getMultiPrimaryBodypart() + "%");
+    }
+    if (isNotEmpty(dto.getTreatHistoryType())) {
+      sql.WHERE("th.treat_type = #{paramMap.treat_type}");
+      map.put("treat_type", dto.getTreatHistoryType());
+    }
+    if (isNotEmpty(dto.getTreatHistoryPlan())) {
+      sql.WHERE("th.plan like #{paramMap.plan}");
+      map.put("plan", "%" + dto.getTreatHistoryPlan() + "%");
     }
 
     sql.ORDER_BY("created_at desc");

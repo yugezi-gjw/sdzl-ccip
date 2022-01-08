@@ -5,18 +5,24 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.zivy009.demo.springbootshirodwz.persistence.dao.TreatCourseChestMapper;
 import com.zivy009.demo.springbootshirodwz.persistence.model.TreatCourseChest;
+import com.zivy009.demo.springbootshirodwz.persistence.model.TreatHistory;
 import com.zivy009.demo.springbootshirodwz.persistence.tools.CommonMapper;
 import com.zivy009.demo.springbootshirodwz.persistence.tools.other.MysqlGenerateSQL;
 import com.zivy009.demo.springbootshirodwz.services.bloodtested.dto.BloodTestedDto;
 import com.zivy009.demo.springbootshirodwz.services.bloodtested.service.IBloodTestedService;
 import com.zivy009.demo.springbootshirodwz.services.impexp.dto.BloodTestedExcelDto;
 import com.zivy009.demo.springbootshirodwz.services.impexp.dto.ChestPatientExcelDto;
+import com.zivy009.demo.springbootshirodwz.services.multiprimary.dto.MultiPrimaryDto;
+import com.zivy009.demo.springbootshirodwz.services.multiprimary.service.IMultiPrimaryService;
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientAdvSearchDto;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.ChestDto;
+import com.zivy009.demo.springbootshirodwz.services.treathistory.dto.TreatHistoryDto;
+import com.zivy009.demo.springbootshirodwz.services.treathistory.service.ITreatHistoryService;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,19 +38,52 @@ public class ChestServiceImpl extends
   CommonMapper commonMapper;
   @Autowired
   IBloodTestedService bloodTestedService;
+  @Autowired
+  IMultiPrimaryService multiPrimaryService;
+  @Autowired
+  ITreatHistoryService treatHistoryService;
+
 
 
   @Transactional(rollbackFor = Exception.class)
   @Override
   public int save(ChestDto chestDto) {
+    List<MultiPrimaryDto> multiPrimaryDtoList = chestDto.getMultiPrimaryList();
+    if (CollectionUtils.isNotEmpty(multiPrimaryDtoList)) {
+      multiPrimaryDtoList.forEach(dto -> {
+        multiPrimaryService.save(dto);
+      });
+    }
+    List<TreatHistoryDto> treatHistoryList = chestDto.getTreatHistoryList();
+    if (CollectionUtils.isNotEmpty(treatHistoryList)) {
+      treatHistoryList.forEach(dto -> {
+        treatHistoryService.save(dto);
+      });
+    }
+
     TreatCourseChest entity = chestDto.toEntity();
     return baseMapper.insert(entity);
   }
 
   @Transactional(rollbackFor = Exception.class)
   @Override
-  public int update(ChestDto treatCourseDto) {
-    TreatCourseChest entity = treatCourseDto.toEntity();
+  public int update(ChestDto chestDto) {
+    multiPrimaryService.deleteByTreatCourseId(chestDto.getTreatCourseId());
+    treatHistoryService.deleteByTreatCourseId(chestDto.getTreatCourseId());
+    List<MultiPrimaryDto> multiPrimaryDtoList = chestDto.getMultiPrimaryList();
+    if (CollectionUtils.isNotEmpty(multiPrimaryDtoList)) {
+      multiPrimaryDtoList.forEach(dto -> {
+        multiPrimaryService.save(dto);
+      });
+    }
+    List<TreatHistoryDto> treatHistoryList = chestDto.getTreatHistoryList();
+    if (CollectionUtils.isNotEmpty(treatHistoryList)) {
+      treatHistoryList.forEach(dto -> {
+        treatHistoryService.save(dto);
+      });
+    }
+
+    TreatCourseChest entity = chestDto.toEntity();
     return baseMapper.updateById(entity);
   }
 

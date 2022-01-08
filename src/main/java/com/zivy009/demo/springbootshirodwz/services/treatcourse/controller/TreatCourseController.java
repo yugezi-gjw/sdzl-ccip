@@ -2,12 +2,15 @@ package com.zivy009.demo.springbootshirodwz.services.treatcourse.controller;
 
 import com.zivy009.demo.springbootshirodwz.common.exception.MyRuntimeException;
 import com.zivy009.demo.springbootshirodwz.common.exception.MyRuntimeRightException;
+import com.zivy009.demo.springbootshirodwz.common.http.RequestUtil;
 import com.zivy009.demo.springbootshirodwz.common.tools.StringUtil;
 import com.zivy009.demo.springbootshirodwz.controller.base.BaseController;
 import com.zivy009.demo.springbootshirodwz.services.bloodtested.dto.BloodTestedDto;
 import com.zivy009.demo.springbootshirodwz.services.bloodtested.service.BloodTestedServiceImpl;
 import com.zivy009.demo.springbootshirodwz.services.bloodtested.service.IBloodTestedService;
 import com.zivy009.demo.springbootshirodwz.services.encounter.dto.EncounterDto;
+import com.zivy009.demo.springbootshirodwz.services.multiprimary.dto.MultiPrimaryDto;
+import com.zivy009.demo.springbootshirodwz.services.multiprimary.service.IMultiPrimaryService;
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.IPatientService;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.AbstractBodypartDto;
@@ -19,6 +22,10 @@ import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.IChestSe
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.IGalactophoreService;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.ITreatCourseService;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.service.TreatCourseServiceImpl;
+import com.zivy009.demo.springbootshirodwz.services.treathistory.dto.TreatHistoryDto;
+import com.zivy009.demo.springbootshirodwz.services.treathistory.dto.TreatHistoryTypeEnum;
+import com.zivy009.demo.springbootshirodwz.services.treathistory.service.ITreatHistoryService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -46,6 +53,10 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
     IPatientService patientService;
     @Autowired
     IBloodTestedService bloodTestedService;
+    @Autowired
+    IMultiPrimaryService multiPrimaryService;
+    @Autowired
+    ITreatHistoryService treatHistoryService;
 
     String viewRoot = "treatcourse";
 
@@ -123,6 +134,9 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
         List<BloodTestedDto> bloodTestedDtoList = bloodTestedService
             .queryByTreatCourseId(treatCourseId);
 
+        List<MultiPrimaryDto> multiPrimaryDtoList = multiPrimaryService.selectByTreatCourseId(treatCourseId);
+        List<TreatHistoryDto> treatHistoryDtoList = treatHistoryService.selectByTreatCourseId(treatCourseId);
+
         AbstractBodypartDto dto = null;
         String view = viewRoot;
         if (StringUtils.equalsIgnoreCase(treatCourseDto.getBodypartCode(), BodypartEnum.chest.name())) {
@@ -146,6 +160,8 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
         model.addAttribute("patient", patientDto);
         model.addAttribute("dto", dto);
         model.addAttribute("list", bloodTestedDtoList);
+        model.addAttribute("multiPrimaryDtoList", multiPrimaryDtoList);
+        model.addAttribute("treatHistoryDtoList", treatHistoryDtoList);
         return view;
     }
 
@@ -176,4 +192,10 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
         }
     }
 
+    @RequestMapping("/treat_history_type/list")
+    String listTreatType(Model model, HttpServletRequest request) {
+        String inputName = RequestUtil.getString(request, "inputName");
+        model.addAttribute("inputName", inputName);
+        return viewRoot + "/treat_type_select";
+    }
 }

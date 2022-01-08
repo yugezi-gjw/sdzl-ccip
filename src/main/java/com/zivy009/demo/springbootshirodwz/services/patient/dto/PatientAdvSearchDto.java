@@ -50,6 +50,12 @@ public class PatientAdvSearchDto {
   private String backup9;
   private String backup10;
 
+  private String multiPrimary;
+  private String multiPrimaryBodypart;
+  private String treatHistoryType;
+  private String treatHistoryPlan;
+
+
   private String bodypart;
 
   /** Chest查询条件 */
@@ -587,6 +593,38 @@ public class PatientAdvSearchDto {
 
   public void setBackup10(String backup10) {
     this.backup10 = backup10;
+  }
+
+  public String getMultiPrimary() {
+    return multiPrimary;
+  }
+
+  public void setMultiPrimary(String multiPrimary) {
+    this.multiPrimary = multiPrimary;
+  }
+
+  public String getMultiPrimaryBodypart() {
+    return multiPrimaryBodypart;
+  }
+
+  public void setMultiPrimaryBodypart(String multiPrimaryBodypart) {
+    this.multiPrimaryBodypart = multiPrimaryBodypart;
+  }
+
+  public String getTreatHistoryType() {
+    return treatHistoryType;
+  }
+
+  public void setTreatHistoryType(String treatHistoryType) {
+    this.treatHistoryType = treatHistoryType;
+  }
+
+  public String getTreatHistoryPlan() {
+    return treatHistoryPlan;
+  }
+
+  public void setTreatHistoryPlan(String treatHistoryPlan) {
+    this.treatHistoryPlan = treatHistoryPlan;
   }
 
   public boolean isSearchByChest() {

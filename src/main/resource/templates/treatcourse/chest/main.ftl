@@ -33,7 +33,7 @@
       <div class="tabsHeaderContent">
         <ul>
           <li><a href="javascript:;"><span>就诊信息</span></a></li>
-          <li><a href="javascript:;"><span>化验结果</span></a></li>
+          <li><a href="javascript:;"><span>血常规</span></a></li>
         </ul>
       </div>
     </div>
@@ -43,7 +43,7 @@
         <div class="pageContent">
                         <div class="panelBar">
                           <ul class="toolBar">
-                            <li><a class="edit" href="chest/edit?treatCourseId=${(dto.treatCourseId)!}" target="dialog" rel="save" width="850" height="750"><span>编辑</span></a></li>
+                            <li><a class="edit" href="chest/edit?treatCourseId=${(dto.treatCourseId)!}" target="dialog" rel="save" width="820" height="750"><span>编辑</span></a></li>
                           </ul>
                         </div>
 
@@ -51,7 +51,8 @@
                 action="chest/view?treatCourseId=${(dto.treatCourseId)!}" method="post">
           </form>
 
-          <div id="chestDiv" class="pageFormContent" layoutH="208">
+          <div id="chestDiv">
+          <div class="pageFormContent">
             <dl>
               <dt>分期：</dt>
               <dd><label>${(dto.stage)!}</label></dd>
@@ -357,6 +358,73 @@
               <dt>备用字段10：</dt>
               <dd><label style="width: 250px;">${(dto.backup10)!}</label></dd>
             </dl>
+          </div>
+          <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="panel" defH="200">
+              <h1>多原发</h1>
+              <div>
+                <table class="table" width="100%">
+                <thead>
+                <tr>
+                  <th>原发病种</th>
+                  <th>部位</th>
+                  <th>诊断时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <#list multiPrimaryDtoList as dto>
+                  <tr>
+                    <td>${dto.primary!}</td>
+                    <td>${dto.bodypart!}</td>
+                    <td>${dto.diagnosisDate!}</td>
+                  </tr>
+                </#list>
+                </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="panel" defH="200">
+            <h1>是否接受过治疗</h1>
+            <div>
+              <table class="table" width="100%">
+              <thead>
+              <tr>
+                <th>治疗类型</th>
+                <th>方案</th>
+                <th>时间</th>
+              </tr>
+              </thead>
+              <tbody>
+              <#list treatHistoryDtoList as dto>
+                <tr>
+                  <td>
+                      <#if (dto.treatType)?? && dto.treatType == "immunotherapy">
+                        免疫
+                      <#elseif (dto.treatType)?? && dto.treatType == "radiation">
+                        放射
+                      <#elseif (dto.treatType)?? && dto.treatType == "chemotherapy">
+                        化疗
+                      <#elseif (dto.treatType)?? && dto.treatType == "surgery">
+                        手术
+                      <#elseif (dto.treatType)?? && dto.treatType == "target">
+                        靶向治疗
+                      <#elseif (dto.treatType)?? && dto.treatType == "incretion">
+                        内分泌治疗
+                      </#if>
+                  </td>
+                  <td>${dto.plan!}</td>
+                  <td>${dto.treatDate!}</td>
+                </tr>
+              </#list>
+              </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          </div>
           </div>
         </div>
       </div>

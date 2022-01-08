@@ -507,6 +507,7 @@ public class ChestDto extends AbstractBodypartDto {
     dto.setSynchronous(treatCourseChest.getSynchronous());
     dto.setTki(treatCourseChest.getTki());
     dto.setTreatType(treatCourseChest.getTreatType());
+
     return dto;
   }
 
@@ -564,40 +565,16 @@ public class ChestDto extends AbstractBodypartDto {
     treatCourseChest.setSynchronous(this.getSynchronous());
     treatCourseChest.setTki(this.getTki());
     treatCourseChest.setTreatType(this.getTreatType());
-    
+
+    if (Objects.nonNull(createdBy)) {
+      treatCourseChest.setCreatedBy(createdBy);
+    }
+    if (Objects.nonNull(updatedAt)) {
+      treatCourseChest.setUpdatedAt(updatedAt);
+    }
+    if (Objects.nonNull(updatedBy)) {
+      treatCourseChest.setUpdatedBy(updatedBy);
+    }
     return treatCourseChest;
   }
-
-//  public static EncounterDto fromMap(Map<String, Object> mapper) {
-//    EncounterDto encounterDto = new EncounterDto();
-//    if (Objects.isNull(mapper) || mapper.isEmpty()) {
-//      return encounterDto;
-//    }
-//    mapper.entrySet().forEach(entry -> {
-//      if (StringUtil.equals(entry.getKey(), "id")) {
-//        encounterDto.setId((Long) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "patient_id")) {
-//        encounterDto.setPatientId((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "patient_name")) {
-//        encounterDto.setPatientName((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "telephone")) {
-//        encounterDto.setTelephone((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "physician")) {
-//        encounterDto.setPhysician((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "outpatient_room")) {
-//        encounterDto.setOutpatientRoom((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "physicist")) {
-//        encounterDto.setPhysicist((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "diagnosis")) {
-//        encounterDto.setDiagnosis((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "prescription")) {
-//        encounterDto.setPrescription((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "technical")) {
-//        encounterDto.setPrescription((String) entry.getValue());
-//      } else if (StringUtil.equals(entry.getKey(), "price")) {
-//        encounterDto.setUnitPrice((BigDecimal) entry.getValue());
-//      }
-//    });
-//    return encounterDto;
-//  }
 }

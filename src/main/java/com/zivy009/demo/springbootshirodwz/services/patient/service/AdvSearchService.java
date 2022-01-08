@@ -44,6 +44,11 @@ public class AdvSearchService {
     String backup9 = RequestUtil.getString(request, "backup9");
     String backup10 = RequestUtil.getString(request, "backup10");
 
+    String multiPrimary = RequestUtil.getString(request, "multiPrimary");
+    String multiPrimaryBodypart = RequestUtil.getString(request, "multiPrimaryBodypart");
+    String treatHistoryType = RequestUtil.getString(request, "treatHistoryType");
+    String treatHistoryPlan = RequestUtil.getString(request, "treatHistoryPlan");
+
     String bodypart = RequestUtil.getString(request, "bodypart");
 
     String egfr = RequestUtil.getString(request, "egfr");
@@ -124,6 +129,11 @@ public class AdvSearchService {
     dto.setBackup8(backup8);
     dto.setBackup9(backup9);
     dto.setBackup10(backup10);
+
+    dto.setMultiPrimary(multiPrimary);
+    dto.setMultiPrimaryBodypart(multiPrimaryBodypart);
+    dto.setTreatHistoryType(treatHistoryType);
+    dto.setTreatHistoryPlan(treatHistoryPlan);
 
     dto.setMenarcheAge(menarcheAge);
     dto.setAmenorrheaAge(amenorrheaAge);

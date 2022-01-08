@@ -6,7 +6,7 @@
 			<li><button type="button" onclick="clickSearch('${(bodypartCode)!}')" class="buttonActive">开始检索</button></li>
 			<li><button type="reset">清空重输</button></li>
 			<li><button type="button" onclick="clickExp('${(bodypartCode)!}')">导出</button></li>
-			<li><a id="exp" type="button" href="excel/${(bodypartCode)!}/exp" onclick="clickExp('${(bodypartCode)!}')">导出</a></li>
+<#--			<li><a id="exp" type="button" href="excel/${(bodypartCode)!}/exp" onclick="clickExp('${(bodypartCode)!}')">导出</a></li>-->
 		</ul>
 	</div>
 	<div class="pageContent">
@@ -405,6 +405,33 @@
 			<dl>
 				<dt>备用字段10：</dt>
 				<dd><input name="backup10" type="text" value="${(model.backup10)!}"/></dd>
+			</dl>
+
+			<dl>
+				<dt>多原发病种：</dt>
+				<dd><input name="multiPrimary" type="text" value="${(model.multiPrimary)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>多原发部位：</dt>
+				<dd><input name="multiPrimaryBodypart" type="text" value="${(model.multiPrimaryBodypart)!}"/></dd>
+			</dl>
+			<dl>
+				<dt>治疗类型：</dt>
+				<dd>
+					<select style="margin-right:3px; font-size: 12px; width: 152px; padding: 2px 2px 2px 2px" name="treatHistoryType">
+						<option value=""></option>
+						<option value="immunotherapy">免疫</option>
+						<option value="radiation">放射</option>
+						<option value="chemotherapy">化疗</option>
+						<option value="surgery">手术</option>
+						<option value="target">靶向治疗</option>
+						<option value="incretion">内分泌治疗</option>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt>治疗方案：</dt>
+				<dd><input name="treatHistoryPlan" type="text" value="${(model.treatHistoryPlan)!}"/></dd>
 			</dl>
 		</div>
 	</div>
