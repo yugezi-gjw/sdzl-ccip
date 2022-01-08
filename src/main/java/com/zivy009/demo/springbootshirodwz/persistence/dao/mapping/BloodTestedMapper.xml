@@ -16,6 +16,13 @@
 		<result column="NLR" property="NLR" />
 		<result column="PLR" property="PLR" />
 		<result column="LMR" property="LMR" />
+		<result column="status" property="status" />
+		<result column="comment" property="comment" />
+
+		<result column="created_at" property="createdAt" />
+		<result column="created_by" property="createdBy" />
+		<result column="updated_at" property="updatedAt" />
+		<result column="updated_by" property="updatedBy" />
 	</resultMap>
 
 </mapper>

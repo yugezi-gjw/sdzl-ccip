@@ -13,6 +13,8 @@ import com.zivy009.demo.springbootshirodwz.services.multiprimary.dto.MultiPrimar
 import com.zivy009.demo.springbootshirodwz.services.multiprimary.service.IMultiPrimaryService;
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.IPatientService;
+import com.zivy009.demo.springbootshirodwz.services.testresult.dto.TestResultDto;
+import com.zivy009.demo.springbootshirodwz.services.testresult.service.ITestResultService;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.AbstractBodypartDto;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.BodypartEnum;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.ChestDto;
@@ -57,6 +59,8 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
     IMultiPrimaryService multiPrimaryService;
     @Autowired
     ITreatHistoryService treatHistoryService;
+    @Autowired
+    ITestResultService testResultService;
 
     String viewRoot = "treatcourse";
 
@@ -133,6 +137,7 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
         PatientDto patientDto = patientService.selectById(treatCourseDto.getPatientId());
         List<BloodTestedDto> bloodTestedDtoList = bloodTestedService
             .queryByTreatCourseId(treatCourseId);
+        List<TestResultDto> testResultList = testResultService.queryByTreatCourseId(treatCourseId);
 
         List<MultiPrimaryDto> multiPrimaryDtoList = multiPrimaryService.selectByTreatCourseId(treatCourseId);
         List<TreatHistoryDto> treatHistoryDtoList = treatHistoryService.selectByTreatCourseId(treatCourseId);
@@ -160,6 +165,7 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
         model.addAttribute("patient", patientDto);
         model.addAttribute("dto", dto);
         model.addAttribute("list", bloodTestedDtoList);
+        model.addAttribute("testResultList", testResultList);
         model.addAttribute("multiPrimaryDtoList", multiPrimaryDtoList);
         model.addAttribute("treatHistoryDtoList", treatHistoryDtoList);
         return view;

@@ -1,15 +1,10 @@
 package com.zivy009.demo.springbootshirodwz.services.bloodtested.controller;
 
-import com.zivy009.demo.springbootshirodwz.common.exception.MyRuntimeException;
 import com.zivy009.demo.springbootshirodwz.common.exception.MyRuntimeRightException;
 import com.zivy009.demo.springbootshirodwz.controller.base.BaseController;
 import com.zivy009.demo.springbootshirodwz.services.bloodtested.dto.BloodTestedDto;
 import com.zivy009.demo.springbootshirodwz.services.bloodtested.service.BloodTestedServiceImpl;
 import com.zivy009.demo.springbootshirodwz.services.bloodtested.service.IBloodTestedService;
-import com.zivy009.demo.springbootshirodwz.services.encounter.dto.EncounterDto;
-import com.zivy009.demo.springbootshirodwz.services.encounter.service.EncounterServiceImpl;
-import com.zivy009.demo.springbootshirodwz.services.encounter.service.IEncounterService;
-import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -24,8 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/bloodtested")
 public class BloodTestedController extends BaseController<BloodTestedServiceImpl> {
 
-    @Autowired
-    IEncounterService encounterService;
     @Autowired
     IBloodTestedService bloodTestedService;
 

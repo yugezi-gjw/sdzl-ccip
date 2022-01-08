@@ -53,7 +53,6 @@
         </div>
 
         <div id="treatcourseBox" class="unitBox" style="margin-left:246px;">
-          <!--#include virtual="list1.html" -->
         </div>
 
       </div>

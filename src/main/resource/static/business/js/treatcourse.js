@@ -46,12 +46,6 @@ function clickSearch(code) {
     $("#advForm").submit();
 }
 
-// function clickExp(code) {
-//     let s = $("#stage").val();
-//     let hrefv = 'excel/' + code + '/exp?stage=' + s;
-//     $("#exp").attr('href', hrefv);
-//     $("#exp").submit();
-// }
 function clickExp(code) {
     let url = "excel/" + code + "/exp"
     $("#advForm").removeAttr('action');
@@ -60,3 +54,4 @@ function clickExp(code) {
     $("#advForm").attr('action', url);
     $("#advForm").submit();
 }
+
