@@ -2,9 +2,11 @@ package com.zivy009.demo.springbootshirodwz.services.bloodtested.dto;
 
 import com.zivy009.demo.springbootshirodwz.persistence.model.BloodTested;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class BloodTestedDto {
   private Long id;
@@ -30,6 +32,12 @@ public class BloodTestedDto {
   private String plr;//PLR
 
   private String lmr;//LMR
+
+  private String comment;
+  private Date createdAt;
+  private String createdBy;
+  private Date updatedAt;
+  private String updatedBy;
 
   public Long getId() {
     return id;
@@ -127,6 +135,46 @@ public class BloodTestedDto {
     this.lmr = lmr;
   }
 
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
+
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public String getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(String createdBy) {
+    this.createdBy = createdBy;
+  }
+
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  public String getUpdatedBy() {
+    return updatedBy;
+  }
+
+  public void setUpdatedBy(String updatedBy) {
+    this.updatedBy = updatedBy;
+  }
+
   public BloodTested toEntity() {
     BloodTested entity = new BloodTested();
     entity.setId(this.getId());
@@ -141,6 +189,20 @@ public class BloodTestedDto {
     entity.setNlr(this.getNlr());
     entity.setSii(this.getSii());
     entity.setPlr(this.getPlr());
+
+    entity.setComment(getComment());
+    if (Objects.nonNull(getCreatedAt())) {
+      entity.setCreatedAt(getCreatedAt());
+    }
+    if (StringUtils.isNotEmpty(getCreatedBy())) {
+      entity.setCreatedBy(getCreatedBy());
+    }
+    if (Objects.nonNull(getUpdatedAt())) {
+      entity.setUpdatedAt(getUpdatedAt());
+    }
+    if (StringUtils.isNotEmpty(getUpdatedBy())) {
+      entity.setUpdatedBy(getUpdatedBy());
+    }
     return entity;
   }
 
@@ -161,6 +223,11 @@ public class BloodTestedDto {
     dto.setNlr(entity.getNlr());
     dto.setSii(entity.getSii());
     dto.setPlr(entity.getPlr());
+    dto.setComment(entity.getComment());
+    dto.setCreatedAt(entity.getCreatedAt());
+    dto.setCreatedBy(entity.getCreatedBy());
+    dto.setUpdatedAt(entity.getUpdatedAt());
+    dto.setUpdatedBy(entity.getUpdatedBy());
     return dto;
   }
 

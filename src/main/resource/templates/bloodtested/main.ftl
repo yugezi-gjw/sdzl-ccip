@@ -41,6 +41,10 @@
         <label>LMR：</label>
         <input name="lmr" type="text"/>
       </p>
+      <p>
+        <label>备注：</label>
+        <input name="comment" type="text"/>
+      </p>
     </div>
     <div class="pageHeader">
       <div class="searchBar">
@@ -92,6 +96,7 @@
         <th>NLR</th>
         <th>PLR</th>
         <th>LMR</th>
+        <th>备注</th>
         <th>操作</th>
       </tr>
       </thead>
@@ -109,6 +114,7 @@
             <td>${bloodTested.nlr!}</td>
             <td>${bloodTested.plr!}</td>
             <td>${bloodTested.lmr!}</td>
+            <td>${bloodTested.comment!}</td>
             <td>
               <a class="delete" onclick="deleteBloodTested('${bloodTested.id}');" title="确定要删除吗?"><span>删除</span></a>
             </td>

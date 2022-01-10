@@ -481,7 +481,6 @@
           </table>
         </div>
       </div>
-
       <div class="panel" minH="80">
         <h1>是否接受过治疗</h1>
         <div>
@@ -547,7 +546,6 @@
           </table>
         </div>
       </div>
-
     </div>
   </div>
 </form>

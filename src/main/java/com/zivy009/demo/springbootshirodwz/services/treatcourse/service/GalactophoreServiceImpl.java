@@ -6,8 +6,14 @@ import com.zivy009.demo.springbootshirodwz.persistence.dao.TreatCourseGalactopho
 import com.zivy009.demo.springbootshirodwz.persistence.model.TreatCourseChest;
 import com.zivy009.demo.springbootshirodwz.persistence.model.TreatCourseGalactophore;
 import com.zivy009.demo.springbootshirodwz.persistence.tools.CommonMapper;
+import com.zivy009.demo.springbootshirodwz.services.multiprimary.dto.MultiPrimaryDto;
+import com.zivy009.demo.springbootshirodwz.services.multiprimary.service.IMultiPrimaryService;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.ChestDto;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.GalactophoreDto;
+import com.zivy009.demo.springbootshirodwz.services.treathistory.dto.TreatHistoryDto;
+import com.zivy009.demo.springbootshirodwz.services.treathistory.service.ITreatHistoryService;
+import java.util.List;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,11 +25,27 @@ public class GalactophoreServiceImpl extends ServiceImpl<TreatCourseGalactophore
 
   @Autowired
   CommonMapper commonMapper;
+  @Autowired
+  IMultiPrimaryService multiPrimaryService;
+  @Autowired
+  ITreatHistoryService treatHistoryService;
 
 
   @Transactional(rollbackFor = Exception.class)
   @Override
   public int save(GalactophoreDto dto) {
+    List<MultiPrimaryDto> multiPrimaryDtoList = dto.getMultiPrimaryList();
+    if (CollectionUtils.isNotEmpty(multiPrimaryDtoList)) {
+      multiPrimaryDtoList.forEach(p -> {
+        multiPrimaryService.save(p);
+      });
+    }
+    List<TreatHistoryDto> treatHistoryList = dto.getTreatHistoryList();
+    if (CollectionUtils.isNotEmpty(treatHistoryList)) {
+      treatHistoryList.forEach(p -> {
+        treatHistoryService.save(p);
+      });
+    }
     TreatCourseGalactophore entity = dto.toEntity();
     return baseMapper.insert(entity);
   }
@@ -31,6 +53,20 @@ public class GalactophoreServiceImpl extends ServiceImpl<TreatCourseGalactophore
   @Transactional(rollbackFor = Exception.class)
   @Override
   public int update(GalactophoreDto dto) {
+    multiPrimaryService.deleteByTreatCourseId(dto.getTreatCourseId());
+    treatHistoryService.deleteByTreatCourseId(dto.getTreatCourseId());
+    List<MultiPrimaryDto> multiPrimaryDtoList = dto.getMultiPrimaryList();
+    if (CollectionUtils.isNotEmpty(multiPrimaryDtoList)) {
+      multiPrimaryDtoList.forEach(p -> {
+        multiPrimaryService.save(p);
+      });
+    }
+    List<TreatHistoryDto> treatHistoryList = dto.getTreatHistoryList();
+    if (CollectionUtils.isNotEmpty(treatHistoryList)) {
+      treatHistoryList.forEach(p -> {
+        treatHistoryService.save(p);
+      });
+    }
     TreatCourseGalactophore entity = dto.toEntity();
     return baseMapper.updateById(entity);
   }
