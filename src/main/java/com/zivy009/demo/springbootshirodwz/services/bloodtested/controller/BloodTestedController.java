@@ -89,6 +89,15 @@ public class BloodTestedController extends BaseController<BloodTestedServiceImpl
         return viewRoot + "/list";
     }
 
+    @RequestMapping("/main")
+    String viewMain(Model model, HttpServletRequest request, @RequestParam(value = "treatCourseId") String treatCourseId) {
+
+        List<BloodTestedDto> list = bloodTestedService.queryByTreatCourseId(treatCourseId);
+        model.addAttribute("list", list);
+        model.addAttribute("treatCourseId", treatCourseId);
+        return viewRoot + "/main";
+    }
+
     @RequestMapping(value = "/del")
 //    @RequiresPermissions("patient:del")
     @ResponseBody
