@@ -139,7 +139,7 @@ public class ChestController extends BaseController<ChestServiceImpl> {
 
     model.addAttribute("treatHistoryDtoList", treatHistoryDtoList);
     model.addAttribute("multiPrimaryDtoList", multiPrimaryDtoList);
-    model.addAttribute("treatCourseChest", chestDto);
+    model.addAttribute("dto", chestDto);
 
     return viewRoot + "/view";
   }

@@ -131,8 +131,8 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     sql.FROM(tableName);
     sql.WHERE("p.status!='deleted'");
     sql.INNER_JOIN("treat_course tc on p.id = tc.patient_id");
-    sql.LEFT_OUTER_JOIN("multi_primary mp on tc.treat_course_id=mp.treat_course_id");
-    sql.LEFT_OUTER_JOIN("treat_history th on tc.treat_course_id=th.treat_course_id");
+    sql.LEFT_OUTER_JOIN("multi_primary mp on tc.treat_course_id=mp.treat_course_id and mp.status = 'active'");
+    sql.LEFT_OUTER_JOIN("treat_history th on tc.treat_course_id=th.treat_course_id and th.status = 'active'");
     if (StringUtils.equalsIgnoreCase(bodypart, BodypartEnum.chest.name())) {
       sql.LEFT_OUTER_JOIN("treat_course_chest tcc on tc.treat_course_id=tcc.treat_course_id");
       sql.WHERE("tc.bodypart_code = 'chest'");
@@ -434,6 +434,11 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     }
 
     sql.ORDER_BY("created_at desc");
+
+    StringBuilder countSql = new StringBuilder("SELECT COUNT(*) c FROM (");
+    countSql.append(sql.getSQL());
+    countSql.append(") tmp");
+
     sql.limit(page.getStartRow(), page.getPageSize());
 
     List<Map<String, Object>> list = commonMapper.queryList(sql.toString(), map);
@@ -441,7 +446,7 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     list.forEach(p -> result.add(PatientListVo.fromMap(p)));
 
     // 2.得到总数
-    Long countInt = commonMapper.queryCount(sql.getCountSQL(), map);
+    Long countInt = commonMapper.queryCount(countSql.toString(), map);
     page.setTotalCount(countInt.intValue());
 
     return result;
@@ -590,7 +595,7 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
     else {
       sql.SELECT("*");
       StringBuffer tmpSql = new StringBuffer(
-          "(select distinct tmp.id, tmp.inpatient_id, tmp.patient_name, tmp.gender, tmp.birth_date, tmp.national_id, tmp.telephone, tmp.telephone2, tmp.smoker, tmp.created_at from");
+          "(select distinct tmp.id, tmp.inpatient_id, tmp.patient_name, tmp.gender, tmp.birth_date, tmp.national_id, tmp.telephone, tmp.telephone2, tmp.smoker, tmp.created_at ");
       tmpSql.append(
           "(select p.* from patient p left join treat_course tc on p.id = tc.patient_id left join treat_course_chest tcc on tc.treat_course_id=tcc.treat_course_id where 1=1");
 
