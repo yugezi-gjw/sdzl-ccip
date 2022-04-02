@@ -280,12 +280,6 @@
           </dd>
         </dl>
         <dl>
-          <dt>胸放与诊断时间时序：</dt>
-          <dd>
-            <input name="cmdTimeSeq" type="text" size="25" value="${(model.cmdTimeSeq)!}"/>
-          </dd>
-        </dl>
-        <dl>
           <dt>胸放与系统治疗时序：</dt>
           <dd>
             <input name="cmsTimeSeq" type="text" size="25" value="${(model.cmsTimeSeq)!}"/>

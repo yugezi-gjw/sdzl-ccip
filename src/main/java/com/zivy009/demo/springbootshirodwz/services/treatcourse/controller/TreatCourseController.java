@@ -11,6 +11,8 @@ import com.zivy009.demo.springbootshirodwz.services.bloodtested.service.IBloodTe
 import com.zivy009.demo.springbootshirodwz.services.encounter.dto.EncounterDto;
 import com.zivy009.demo.springbootshirodwz.services.multiprimary.dto.MultiPrimaryDto;
 import com.zivy009.demo.springbootshirodwz.services.multiprimary.service.IMultiPrimaryService;
+import com.zivy009.demo.springbootshirodwz.services.pathologyresult.dto.PathologyResultDto;
+import com.zivy009.demo.springbootshirodwz.services.pathologyresult.service.IPathologyResultService;
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.IPatientService;
 import com.zivy009.demo.springbootshirodwz.services.testresult.dto.TestResultDto;
@@ -46,7 +48,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TreatCourseController extends BaseController<TreatCourseServiceImpl> {
 
     @Autowired
-    ITreatCourseService treatCourseService;
+    ITreatCourseService baseService;
     @Autowired
     IChestService chestService;
     @Autowired
@@ -61,6 +63,8 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
     ITreatHistoryService treatHistoryService;
     @Autowired
     ITestResultService testResultService;
+    @Autowired
+    IPathologyResultService pathologyResultService;
 
     String viewRoot = "treatcourse";
 
@@ -133,11 +137,12 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
     @RequestMapping("/detail")
     String detail(Model model, HttpServletRequest request, @RequestParam(value = "treatCourseId") String treatCourseId) {
 
-        TreatCourseDto treatCourseDto = treatCourseService.selectByTreatCourseId(treatCourseId);
+        TreatCourseDto treatCourseDto = baseService.selectByTreatCourseId(treatCourseId);
         PatientDto patientDto = patientService.selectById(treatCourseDto.getPatientId());
         List<BloodTestedDto> bloodTestedDtoList = bloodTestedService
             .queryByTreatCourseId(treatCourseId);
         List<TestResultDto> testResultList = testResultService.queryByTreatCourseId(treatCourseId);
+        List<PathologyResultDto> pathologyResultList = pathologyResultService.queryByTreatCourseId(treatCourseId);
 
         List<MultiPrimaryDto> multiPrimaryDtoList = multiPrimaryService.selectByTreatCourseId(treatCourseId);
         List<TreatHistoryDto> treatHistoryDtoList = treatHistoryService.selectByTreatCourseId(treatCourseId);
@@ -166,6 +171,7 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
         model.addAttribute("dto", dto);
         model.addAttribute("list", bloodTestedDtoList);
         model.addAttribute("testResultList", testResultList);
+        model.addAttribute("pathologyResultList", pathologyResultList);
         model.addAttribute("multiPrimaryDtoList", multiPrimaryDtoList);
         model.addAttribute("treatHistoryDtoList", treatHistoryDtoList);
         return view;
@@ -178,7 +184,7 @@ public class TreatCourseController extends BaseController<TreatCourseServiceImpl
         List<BloodTestedDto> bloodTestedDtoList = bloodTestedService
             .queryByTreatCourseId(treatCourseId);
 
-        TreatCourseDto treatCourseDto = treatCourseService.selectByTreatCourseId(treatCourseId);
+        TreatCourseDto treatCourseDto = baseService.selectByTreatCourseId(treatCourseId);
         if (StringUtils.equalsIgnoreCase(BodypartEnum.chest.name(), treatCourseDto.getBodypartCode())) {
             ChestDto chestDto = chestService.selectByTreatCourseId(treatCourseId);
             if (StringUtils.isEmpty(chestDto.getTreatCourseId())) {

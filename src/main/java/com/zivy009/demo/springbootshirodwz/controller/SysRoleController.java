@@ -40,6 +40,8 @@ public class SysRoleController extends BaseController<SysRoleService> {
     SysRolePermissionService sysRolePermissionService;
     @Autowired
     SysPermissionService sysPermissionService;
+    @Autowired
+    SysRoleService baseService;
     String viewRoot = "sysRole";
 
     @RequestMapping("/list")

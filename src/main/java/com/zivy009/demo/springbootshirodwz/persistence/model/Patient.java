@@ -25,6 +25,9 @@ public class Patient extends Model<Patient> implements Serializable {
   @TableField("patient_name")
   private String patientName;
 
+  @TableField("first_visit_age")
+  private String firstVisitAge;
+
   private String pinyin;
 
   private String address;
@@ -300,6 +303,14 @@ public class Patient extends Model<Patient> implements Serializable {
 
   public void setDeletedAt(Date deletedAt) {
     this.deletedAt = deletedAt;
+  }
+
+  public String getFirstVisitAge() {
+    return firstVisitAge;
+  }
+
+  public void setFirstVisitAge(String firstVisitAge) {
+    this.firstVisitAge = firstVisitAge;
   }
 
   @Override

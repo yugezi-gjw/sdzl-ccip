@@ -310,6 +310,30 @@
 					</dd>
 				</dl>
 				<dl>
+					<dt>初次靶向应用时间：</dt>
+					<dd><input name="firstTargetUseDate" type="text" class="date" value="${(model.firstTargetUseDate)!}"/></dd>
+				</dl>
+				<dl>
+					<dt>初次靶向放疗时间：</dt>
+					<dd><input name="firstTargetTreatDate" type="text" class="date" value="${(model.firstTargetTreatDate)!}"/></dd>
+				</dl>
+				<dl>
+					<dt>KPS：</dt>
+					<dd><input name="kps" type="text" value="${(model.kps)!}"/></dd>
+				</dl>
+				<dl>
+					<dt>NRS2002：</dt>
+					<dd><input name="nrs2002" type="text" value="${(model.nrs2002)!}"/></dd>
+				</dl>
+				<dl>
+					<dt>NRS：</dt>
+					<dd><input name="nrs" type="text" value="${(model.nrs)!}"/></dd>
+				</dl>
+				<dl>
+					<dt>APRINT：</dt>
+					<dd><input name="aprint" type="text" value="${(model.aprint)!}"/></dd>
+				</dl>
+				<dl>
 					<dt>全身治疗方案1：</dt>
 					<dd><input name="holisticTx1" type="text" value="${(model.holisticTx1)!}"/></dd>
 				</dl>

@@ -43,6 +43,8 @@ public class SysUserController extends BaseController<SysUserService> {
 
     @Autowired
     SysRoleService roleService;
+    @Autowired
+    SysUserService baseService;
 
     String viewRoot = "sysuser";
 

@@ -562,6 +562,13 @@ public class GalactophoreDto extends AbstractBodypartDto {
     dto.setSurgeryMode(entity.getSurgeryMode());
     dto.setSteepGrade(entity.getSteepGrade());
     dto.setTreatCourseId(entity.getTreatCourseId());
+
+    dto.setFirstTargetUseDate(entity.getFirstTargetUseDate());
+    dto.setFirstTargetTreatDate(entity.getFirstTargetTreatDate());
+    dto.setKps(entity.getKps());
+    dto.setNrs2002(entity.getNrs2002());
+    dto.setNrs(entity.getNrs());
+    dto.setAprint(entity.getAprint());
     return dto;
   }
 
@@ -622,6 +629,13 @@ public class GalactophoreDto extends AbstractBodypartDto {
     entity.setSteepGrade(this.getSteepGrade());
     entity.setSurgeryMode(this.getSurgeryMode());
     entity.setTreatCourseId(this.getTreatCourseId());
+
+    entity.setFirstTargetUseDate(this.getFirstTargetUseDate());
+    entity.setFirstTargetTreatDate(this.getFirstTargetTreatDate());
+    entity.setKps(this.getKps());
+    entity.setNrs2002(this.getNrs2002());
+    entity.setNrs(this.getNrs());
+    entity.setAprint(this.getAprint());
     return entity;
   }
 

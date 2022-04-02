@@ -232,6 +232,30 @@
       </label></dd>
   </dl>
   <dl>
+    <dt>初次靶向应用时间：</dt>
+    <dd><label style="width: 250px;">${(dto.firstTargetUseDate)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>初次靶向放疗时间：</dt>
+    <dd><label style="width: 250px;">${(dto.firstTargetTreatDate)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>KPS：</dt>
+    <dd><label style="width: 250px;">${(dto.kps)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>NRS2002：</dt>
+    <dd><label style="width: 250px;">${(dto.NRS2002)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>NRS：</dt>
+    <dd><label style="width: 250px;">${(dto.NRS)!}</label></dd>
+  </dl>
+  <dl>
+    <dt>APRINT：</dt>
+    <dd><label style="width: 250px;">${(dto.APRINT)!}</label></dd>
+  </dl>
+  <dl>
     <dt>全身治疗方案1：</dt>
     <dd><label style="width: 250px;">${(dto.holisticTx1)!}</label></dd>
   </dl>

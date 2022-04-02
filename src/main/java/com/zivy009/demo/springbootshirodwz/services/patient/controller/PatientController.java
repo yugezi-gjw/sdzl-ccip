@@ -12,6 +12,7 @@ import com.zivy009.demo.springbootshirodwz.services.encounter.service.IEncounter
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientAdvSearchDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.dto.PatientDto;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.AdvSearchService;
+import com.zivy009.demo.springbootshirodwz.services.patient.service.IPatientService;
 import com.zivy009.demo.springbootshirodwz.services.patient.service.PatientServiceImpl;
 import com.zivy009.demo.springbootshirodwz.services.patient.vo.PatientListVo;
 import com.zivy009.demo.springbootshirodwz.services.treatcourse.dto.BodypartEnum;
@@ -39,6 +40,8 @@ public class PatientController extends BaseController<PatientServiceImpl> {
     IBloodTestedService bloodTestedService;
     @Autowired
     AdvSearchService advSearchService;
+    @Autowired
+    IPatientService baseService;
 
     String viewRoot = "patient";
 

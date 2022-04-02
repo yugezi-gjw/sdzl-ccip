@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zivy009.demo.springbootshirodwz.service.impl.SysUserService;
+import org.springframework.context.annotation.Primary;
 
 /**
  * @author zivy
@@ -14,8 +15,8 @@ import com.zivy009.demo.springbootshirodwz.service.impl.SysUserService;
  * @describe
  */
 public class BaseController<S> {
-    @Autowired
-    protected  S baseService;
+//    @Autowired
+//    protected  S baseService;
     
     public BaseController() {
         // TODO Auto-generated constructor stub

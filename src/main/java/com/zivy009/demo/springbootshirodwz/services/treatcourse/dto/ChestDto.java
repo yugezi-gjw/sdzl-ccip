@@ -508,6 +508,13 @@ public class ChestDto extends AbstractBodypartDto {
     dto.setTki(treatCourseChest.getTki());
     dto.setTreatType(treatCourseChest.getTreatType());
 
+    dto.setFirstTargetUseDate(treatCourseChest.getFirstTargetUseDate());
+    dto.setFirstTargetTreatDate(treatCourseChest.getFirstTargetTreatDate());
+    dto.setKps(treatCourseChest.getKps());
+    dto.setNrs2002(treatCourseChest.getNrs2002());
+    dto.setNrs(treatCourseChest.getNrs());
+    dto.setAprint(treatCourseChest.getAprint());
+
     return dto;
   }
 
@@ -565,6 +572,13 @@ public class ChestDto extends AbstractBodypartDto {
     treatCourseChest.setSynchronous(this.getSynchronous());
     treatCourseChest.setTki(this.getTki());
     treatCourseChest.setTreatType(this.getTreatType());
+
+    treatCourseChest.setFirstTargetUseDate(this.getFirstTargetUseDate());
+    treatCourseChest.setFirstTargetTreatDate(this.getFirstTargetTreatDate());
+    treatCourseChest.setKps(this.getKps());
+    treatCourseChest.setNrs2002(this.getNrs2002());
+    treatCourseChest.setNrs(this.getNrs());
+    treatCourseChest.setAprint(this.getAprint());
 
     if (Objects.nonNull(createdBy)) {
       treatCourseChest.setCreatedBy(createdBy);

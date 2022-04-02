@@ -3,8 +3,8 @@ package com.zivy009.demo.springbootshirodwz.services.testresult.service;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.zivy009.demo.springbootshirodwz.persistence.dao.TestResultMapper;
 import com.zivy009.demo.springbootshirodwz.persistence.model.TestResult;
-import com.zivy009.demo.springbootshirodwz.services.multiprimary.dto.MultiPrimaryDto;
 import com.zivy009.demo.springbootshirodwz.services.testresult.dto.TestResultDto;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,8 +33,10 @@ public class TestResultServiceImpl extends ServiceImpl<TestResultMapper, TestRes
 
   @Override
   public int del(Long id) {
-    int rInt = baseMapper.deleteById(id);
-    return rInt;
+    TestResult entity = baseMapper.selectById(id);
+    entity.setStatus("inactive");
+    entity.setUpdatedAt(new Date());
+    return baseMapper.updateById(entity);
   }
 
   @Override

@@ -99,7 +99,7 @@ public class ChestController extends BaseController<ChestServiceImpl> {
             p.setUpdatedBy(sysUser.getLoginName());
           });
         }
-        returnInt = baseService.update(chestDto);
+        returnInt = chestService.update(chestDto);
       } else {
         chestDto.setCreatedBy(sysUser.getLoginName());
         if (CollectionUtils.isNotEmpty(chestDto.getMultiPrimaryList())) {
@@ -114,7 +114,7 @@ public class ChestController extends BaseController<ChestServiceImpl> {
             p.setCreatedBy(sysUser.getLoginName());
           });
         }
-        returnInt = baseService.save(chestDto);
+        returnInt = chestService.save(chestDto);
       }
 
     } catch (MyRuntimeRightException rightE) {

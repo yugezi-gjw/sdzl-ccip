@@ -36,7 +36,7 @@
 	<div class="panelBar">
 		<ul class="toolBar">
 			<@shiro.hasPermission name="patient:add">
-			<li><a class="add" href="patient/add_by_bodypart?code=${(bodypartCode)!}" target="dialog" rel="save"><span>添加患者</span></a></li>
+			<li><a class="add" href="patient/add_by_bodypart?code=${(bodypartCode)!}" target="dialog" rel="save" width="550" height="620"><span>添加患者</span></a></li>
 			</@shiro.hasPermission>
 			<@shiro.hasPermission name="patient:del">
 			<li><a class="delete" href="patient/del?id={sid}" target="ajaxTodo" title="确定要删除吗?"><span>删除患者</span></a></li>
@@ -62,7 +62,7 @@
 				<th>姓名</th>
 				<th>住院号</th>
 				<th>性别</th>
-				<th>出生日期</th>
+				<th>初诊年龄</th>
 				<th>吸烟史</th>
 				<th>身份证号</th>
 				<th>手机号1</th>
@@ -78,7 +78,7 @@
 				<td>${dto.patientName!}</td>
 				<td>${dto.inpatientId!}</td>
 				<td>${dto.gender!}</td>
-				<td>${dto.birthDate!}</td>
+				<td>${dto.firstVisitAge!}</td>
 				<td>${dto.smoker!}</td>
 				<td>${dto.nationalId!}</td>
 				<td>${dto.telephone!}</td>

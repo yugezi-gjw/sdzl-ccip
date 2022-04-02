@@ -62,6 +62,13 @@
 		<result column="backup8" property="backup8" />
 		<result column="backup9" property="backup9" />
 		<result column="backup10" property="backup10" />
+
+		<result column="first_target_use_date" property="firstTargetUseDate" />
+		<result column="first_target_treat_date" property="firstTargetTreatDate" />
+		<result column="kps" property="kps" />
+		<result column="nrs2002" property="nrs2002" />
+		<result column="nrs" property="nrs" />
+		<result column="aprint" property="aprint" />
 	</resultMap>
 
 </mapper>

@@ -37,7 +37,7 @@ public class GalactophoreController extends BaseController<GalactophoreServiceIm
     @Autowired
     ITreatCourseService treatCourseService;
     @Autowired
-    IGalactophoreService galactophoreService;
+    IGalactophoreService baseService;
     @Autowired
     IPatientService patientService;
     @Autowired
@@ -51,7 +51,7 @@ public class GalactophoreController extends BaseController<GalactophoreServiceIm
 
     @RequestMapping("/edit")
     String edit(Model model, HttpServletRequest request, @RequestParam(value = "treatCourseId") String treatCourseId) {
-        GalactophoreDto dto = galactophoreService.selectByTreatCourseId(treatCourseId);
+        GalactophoreDto dto = baseService.selectByTreatCourseId(treatCourseId);
         if (StringUtils.isEmpty(dto.getTreatCourseId())) {
             dto.setTreatCourseId(treatCourseId);
         }
@@ -126,7 +126,7 @@ public class GalactophoreController extends BaseController<GalactophoreServiceIm
     @RequestMapping("/view")
     String view(Model model, HttpServletRequest request, @RequestParam(value = "treatCourseId") String treatCourseId) {
 
-        GalactophoreDto dto = galactophoreService.selectByTreatCourseId(treatCourseId);
+        GalactophoreDto dto = baseService.selectByTreatCourseId(treatCourseId);
         List<MultiPrimaryDto> multiPrimaryDtoList = multiPrimaryService.selectByTreatCourseId(
             dto.getTreatCourseId());
         List<TreatHistoryDto> treatHistoryDtoList = treatHistoryService.selectByTreatCourseId(

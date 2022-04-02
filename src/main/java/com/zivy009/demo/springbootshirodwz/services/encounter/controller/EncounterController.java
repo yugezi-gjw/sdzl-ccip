@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class EncounterController extends BaseController<EncounterServiceImpl> {
 
     @Autowired
-    IEncounterService encounterService;
+    IEncounterService baseService;
     @Autowired
     IBloodTestedService bloodTestedService;
 

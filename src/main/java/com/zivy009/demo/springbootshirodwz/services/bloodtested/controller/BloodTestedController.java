@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BloodTestedController extends BaseController<BloodTestedServiceImpl> {
 
     @Autowired
-    IBloodTestedService bloodTestedService;
+    IBloodTestedService baseService;
 
     String viewRoot = "bloodtested";
 
@@ -84,7 +84,7 @@ public class BloodTestedController extends BaseController<BloodTestedServiceImpl
     @RequiresPermissions("patient:list")
     String detail(Model model, HttpServletRequest request, @RequestParam(value = "treatCourseId") String treatCourseId) {
 
-        List<BloodTestedDto> list = bloodTestedService.queryByTreatCourseId(treatCourseId);
+        List<BloodTestedDto> list = baseService.queryByTreatCourseId(treatCourseId);
         model.addAttribute("list", list);
         return viewRoot + "/list";
     }
@@ -92,7 +92,7 @@ public class BloodTestedController extends BaseController<BloodTestedServiceImpl
     @RequestMapping("/main")
     String viewMain(Model model, HttpServletRequest request, @RequestParam(value = "treatCourseId") String treatCourseId) {
 
-        List<BloodTestedDto> list = bloodTestedService.queryByTreatCourseId(treatCourseId);
+        List<BloodTestedDto> list = baseService.queryByTreatCourseId(treatCourseId);
         model.addAttribute("list", list);
         model.addAttribute("treatCourseId", treatCourseId);
         return viewRoot + "/main";

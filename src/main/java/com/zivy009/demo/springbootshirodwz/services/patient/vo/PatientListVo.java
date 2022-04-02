@@ -17,6 +17,8 @@ public class PatientListVo {
 
   private String birthDate;
 
+  private String firstVisitAge;
+
   private String nationalId;
 
   private String telephone;
@@ -137,6 +139,14 @@ public class PatientListVo {
     this.treatCourseId = treatCourseId;
   }
 
+  public String getFirstVisitAge() {
+    return firstVisitAge;
+  }
+
+  public void setFirstVisitAge(String firstVisitAge) {
+    this.firstVisitAge = firstVisitAge;
+  }
+
   public static PatientListVo fromMap(Map<String, Object> mapper) {
     PatientListVo dto = new PatientListVo();
     if (Objects.isNull(mapper) || mapper.isEmpty()) {
@@ -178,6 +188,9 @@ public class PatientListVo {
       }
       else if (StringUtil.equals(entry.getKey(), "bodypart")) {
         dto.setBodypart((String) entry.getValue());
+      }
+      else if (StringUtil.equals(entry.getKey(), "first_visit_age")) {
+        dto.setFirstVisitAge((String) entry.getValue());
       }
     });
     return dto;

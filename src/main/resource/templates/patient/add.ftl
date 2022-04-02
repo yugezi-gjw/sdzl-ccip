@@ -26,8 +26,8 @@
 					</select></dd>
 			</dl>
 			<dl>
-				<dt>出生日期：</dt>
-				<dd><input name="birthDate" type="text" class="date" value="${(model.birthDate)!}" /></dd>
+				<dt>初诊年龄：</dt>
+				<dd><input name="firstVisitAge" type="text" size="30" value="${(model.firstVisitAge)!}" /></dd>
 			</dl>
 			<dl>
 				<dt>吸烟史：</dt>

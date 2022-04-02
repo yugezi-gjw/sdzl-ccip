@@ -268,10 +268,6 @@
                      value="${(model.otherMetastasisRadiation)!}"/></dd>
         </dl>
         <dl>
-          <dt>胸放与诊断时间时序：</dt>
-          <dd><input name="cmdTimeSeq" type="text" value="${(model.cmdTimeSeq)!}"/></dd>
-        </dl>
-        <dl>
           <dt>胸放与系统治疗时序：</dt>
           <dd><input name="cmsTimeSeq" type="text" value="${(model.cmsTimeSeq)!}"/></dd>
         </dl>
@@ -378,6 +374,30 @@
                 </#if>
             </select>
           </dd>
+        </dl>
+        <dl>
+          <dt>初次靶向应用时间：</dt>
+          <dd><input name="firstTargetUseDate" type="text" class="date" value="${(model.firstTargetUseDate)!}"/></dd>
+        </dl>
+        <dl>
+          <dt>初次靶向放疗时间：</dt>
+          <dd><input name="firstTargetTreatDate" type="text" class="date" value="${(model.firstTargetTreatDate)!}"/></dd>
+        </dl>
+        <dl>
+          <dt>KPS：</dt>
+          <dd><input name="kps" type="text" value="${(model.kps)!}"/></dd>
+        </dl>
+        <dl>
+          <dt>NRS2002：</dt>
+          <dd><input name="nrs2002" type="text" value="${(model.nrs2002)!}"/></dd>
+        </dl>
+        <dl>
+          <dt>NRS：</dt>
+          <dd><input name="nrs" type="text" value="${(model.nrs)!}"/></dd>
+        </dl>
+        <dl>
+          <dt>APRINT：</dt>
+          <dd><input name="aprint" type="text" value="${(model.aprint)!}"/></dd>
         </dl>
         <dl>
           <dt>全身治疗方案1：</dt>

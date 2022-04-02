@@ -8,6 +8,7 @@
 		<result column="inpatient_id" property="inpatientId" />
 		<result column="outpatient_id" property="outpatientId" />
 		<result column="patient_name" property="patientName" />
+		<result column="first_visit_age" property="firstVisitAge" />
 		<result column="pinyin" property="pinyin" />
 		<result column="address" property="address" />
 		<result column="gender" property="gender" />

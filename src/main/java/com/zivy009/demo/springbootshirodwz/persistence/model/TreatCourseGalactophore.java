@@ -163,6 +163,15 @@ public class TreatCourseGalactophore extends Model<TreatCourseGalactophore> impl
   private String backup9;
   private String backup10;
 
+  @TableField("first_target_use_date")
+  private String firstTargetUseDate; //初次靶向应用时间
+  @TableField("first_target_treat_date")
+  private String firstTargetTreatDate; //初次靶向放疗时间
+  private String kps;
+  private String nrs2002;
+  private String nrs;
+  private String aprint;
+
   public Long getId() {
     return id;
   }
@@ -649,6 +658,54 @@ public class TreatCourseGalactophore extends Model<TreatCourseGalactophore> impl
 
   public void setBackup10(String backup10) {
     this.backup10 = backup10;
+  }
+
+  public String getFirstTargetUseDate() {
+    return firstTargetUseDate;
+  }
+
+  public void setFirstTargetUseDate(String firstTargetUseDate) {
+    this.firstTargetUseDate = firstTargetUseDate;
+  }
+
+  public String getFirstTargetTreatDate() {
+    return firstTargetTreatDate;
+  }
+
+  public void setFirstTargetTreatDate(String firstTargetTreatDate) {
+    this.firstTargetTreatDate = firstTargetTreatDate;
+  }
+
+  public String getKps() {
+    return kps;
+  }
+
+  public void setKps(String kps) {
+    this.kps = kps;
+  }
+
+  public String getNrs2002() {
+    return nrs2002;
+  }
+
+  public void setNrs2002(String nrs2002) {
+    this.nrs2002 = nrs2002;
+  }
+
+  public String getNrs() {
+    return nrs;
+  }
+
+  public void setNrs(String nrs) {
+    this.nrs = nrs;
+  }
+
+  public String getAprint() {
+    return aprint;
+  }
+
+  public void setAprint(String aprint) {
+    this.aprint = aprint;
   }
 
   @Override

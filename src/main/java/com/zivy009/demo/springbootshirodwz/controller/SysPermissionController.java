@@ -35,7 +35,9 @@ import com.zivy009.demo.springbootshirodwz.service.impl.SysPermissionService;
 @RequestMapping("/sysPermission")
 public class SysPermissionController extends BaseController<SysPermissionService> {
 
-   
+    @Autowired
+   SysPermissionService baseService;
+
     String viewRoot = "syspermission";
 
     @RequestMapping("/list")

@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,9 @@ import com.zivy009.demo.springbootshirodwz.service.impl.DemoService2;
 @Controller
 @RequestMapping(value = "/demo")
 public class DemoController extends BaseController<DemoService2> {
-    
+
+    @Autowired
+    DemoService2 baseService;
    
     String viewRoot = "demo";
 

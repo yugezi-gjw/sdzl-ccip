@@ -17,7 +17,7 @@ public class PatientDto {
 
   private String gender;
 
-  private String birthDate;
+  private String firstVisitAge;
 
   private String nationalId;
 
@@ -63,12 +63,12 @@ public class PatientDto {
     this.gender = gender;
   }
 
-  public String getBirthDate() {
-    return birthDate;
+  public String getFirstVisitAge() {
+    return firstVisitAge;
   }
 
-  public void setBirthDate(String birthDate) {
-    this.birthDate = birthDate;
+  public void setFirstVisitAge(String firstVisitAge) {
+    this.firstVisitAge = firstVisitAge;
   }
 
   public String getNationalId() {
@@ -127,7 +127,7 @@ public class PatientDto {
     p.setStatus(status);
     p.setTelephone(telephone);
     p.setTelephone2(telephone2);
-    p.setBirthDate(birthDate);
+    p.setFirstVisitAge(firstVisitAge);
     p.setNationalId(nationalId);
     p.setGender(gender);
     p.setSmoker(smoker);
@@ -139,7 +139,7 @@ public class PatientDto {
     this.setInpatientId(patient.getInpatientId());
     this.setPatientName(patient.getPatientName());
     this.setGender(patient.getGender());
-    this.setBirthDate(patient.getBirthDate());
+    this.setFirstVisitAge(patient.getFirstVisitAge());
     this.setNationalId(patient.getNationalId());
     this.setSmoker(patient.getSmoker());
     this.setTelephone(patient.getTelephone());
@@ -169,8 +169,8 @@ public class PatientDto {
       } else if (StringUtil.equals(entry.getKey(), "national_id")) {
         dto.setNationalId((String) entry.getValue());
       }
-      else if (StringUtil.equals(entry.getKey(), "birth_date")) {
-        dto.setBirthDate((String) entry.getValue());
+      else if (StringUtil.equals(entry.getKey(), "first_visit_age")) {
+        dto.setFirstVisitAge((String) entry.getValue());
       }
       else if (StringUtil.equals(entry.getKey(), "telephone")) {
         dto.setTelephone((String) entry.getValue());
