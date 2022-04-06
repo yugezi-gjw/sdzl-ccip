@@ -103,6 +103,7 @@
       <tbody>
       <#if list?? && (list?size > 0)>
           <#list list as bloodTested>
+            <tr>
           <#--                        <td>${bloodTested.id!}</td>-->
             <td>${bloodTested.testedName!}</td>
             <td>${bloodTested.whiteCells!}</td>

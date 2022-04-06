@@ -326,7 +326,7 @@
 </div>
 <div class="row">
   <div class="col-md-6 col-sm-12">
-    <div class="panel" defH="150">
+    <div class="panel" defH="140">
       <h1>多原发</h1>
       <div>
         <table class="table" width="100%">
@@ -351,7 +351,7 @@
     </div>
   </div>
   <div class="col-md-6 col-sm-12">
-    <div class="panel" defH="150">
+    <div class="panel" defH="140">
       <h1>是否接受过治疗</h1>
       <div>
         <table class="table" width="100%">

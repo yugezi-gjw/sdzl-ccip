@@ -29,13 +29,13 @@ public class MyBatisPlusGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("D:\\test2");//这里写你自己的java目录
+        gc.setOutputDir("C:\\Backup\\myprojects\\sdzl-ccip");//这里写你自己的java目录
         gc.setFileOverride(true);//是否覆盖
         gc.setActiveRecord(true);
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(false);// XML columList
-        gc.setAuthor("zivy");
+        gc.setAuthor("");
         
         gc.setServiceImplName("%sService");
         mpg.setGlobalConfig(gc);
@@ -53,14 +53,14 @@ public class MyBatisPlusGenerator {
         
       
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername("campus");
-        dsc.setPassword("campus123"); 
-        dsc.setUrl("jdbc:mysql://112.126.90.223:3306/test?characterEncoding=utf8");
+        dsc.setUsername("root");
+        dsc.setPassword("V@rian01");
+        dsc.setUrl("jdbc:mysql://localhost:3306/sdzlccip?characterEncoding=utf8");
         mpg.setDataSource(dsc);
          
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setTablePrefix(new String[]{"zz_"});// 此处可以修改为您的表前缀
+        strategy.setTablePrefix(new String[]{"liver_tested"});// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
         mpg.setStrategy(strategy);
 
@@ -70,9 +70,9 @@ public class MyBatisPlusGenerator {
         pc.setEntity("com.zivy009.demo.springbootshirodwz.persistence.model");
         pc.setMapper("com.zivy009.demo.springbootshirodwz.persistence.dao");
         pc.setXml("com.zivy009.demo.springbootshirodwz.persistence.dao.mapping");
-        pc.setService("com.zivy009.demo.springbootshirodwz.service");       //本项目没用，生成之后删掉
-        pc.setServiceImpl("com.zivy009.demo.springbootshirodwz.service.impl");   //本项目没用，生成之后删掉
-        pc.setController("com.zivy009.demo.springbootshirodwz.controller");    //本项目没用，生成之后删掉
+        pc.setService("com.zivy009.demo.springbootshirodwz.services.livertested");       //本项目没用，生成之后删掉
+        pc.setServiceImpl("com.zivy009.demo.springbootshirodwz.services.livertested.impl");   //本项目没用，生成之后删掉
+        pc.setController("com.zivy009.demo.springbootshirodwz.services.livertested.controller");    //本项目没用，生成之后删掉
         mpg.setPackageInfo(pc);
 
         // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值

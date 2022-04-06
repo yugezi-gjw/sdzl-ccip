@@ -1,5 +1,5 @@
 <div class="pageContent">
-  <div class="panel" defH="70">
+  <div class="panel" defH="60">
     <h1>病人基本信息</h1>
     <div class="pageContent">
       <div class="pageFormContent">
@@ -53,7 +53,7 @@
                 action="galactophore/view?treatCourseId=${(dto.treatCourseId)!}" method="post">
           </form>
 
-          <div id="galactophoreDiv">
+          <div id="galactophoreDiv" style="overflow:auto">
             <div class="pageFormContent">
               <dl>
                 <dt>初潮年龄：</dt>
@@ -383,7 +383,7 @@
           </div>
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <div class="panel" defH="150">
+              <div class="panel" defH="140">
                 <h1>多原发</h1>
                 <div>
                   <table class="table" width="100%">
@@ -408,7 +408,7 @@
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
-              <div class="panel" defH="150">
+              <div class="panel" defH="140">
                 <h1>是否接受过治疗</h1>
                 <div>
                   <table class="table" width="100%">
@@ -450,18 +450,17 @@
         </div>
       </div>
       <div>
-        <div layoutH="146" style="float:left; display:block; overflow:auto; width:240px; border:solid 1px #CCC; line-height:21px; background:#fff">
+        <div layoutH="146" style="float:left; display:block; overflow:auto; width:130px; border:solid 1px #CCC; line-height:21px; background:#fff">
           <ul class="tree treeFolder">
             <li><a href="javascript">化验单</a>
               <ul>
                 <li><a href="bloodtested/main?treatCourseId=${(dto.treatCourseId)!}" target="ajax" rel="assayResultBox">血常规</a></li>
-                <li><a href="" target="ajax" rel="assayResultBox">尿常规</a></li>
-                <li><a href="" target="ajax" rel="assayResultBox">肝功能</a></li>
+                <li><a href="liver-tested/main?treatCourseId=${(dto.treatCourseId)!}" target="ajax" rel="assayResultBox">肝功能</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <div id="assayResultBox" class="unitBox" style="margin-left:246px;">
+        <div id="assayResultBox" class="unitBox" style="margin-left:136px;">
         </div>
       </div>
       <div>

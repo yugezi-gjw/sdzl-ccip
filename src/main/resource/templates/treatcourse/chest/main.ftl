@@ -455,18 +455,17 @@
         </div>
       </div>
       <div>
-        <div layoutH="146" style="float:left; display:block; overflow:auto; width:240px; border:solid 1px #CCC; line-height:21px; background:#fff">
+        <div layoutH="146" style="float:left; display:block; overflow:auto; width:130px; border:solid 1px #CCC; line-height:21px; background:#fff">
           <ul class="tree treeFolder">
             <li><a href="javascript">化验单</a>
               <ul>
                 <li><a href="bloodtested/main?treatCourseId=${(dto.treatCourseId)!}" target="ajax" rel="assayResultBox">血常规</a></li>
-                <li><a href="" target="ajax" rel="assayResultBox">尿常规</a></li>
-                <li><a href="" target="ajax" rel="assayResultBox">肝功能</a></li>
+                <li><a href="liver-tested/main?treatCourseId=${(dto.treatCourseId)!}" target="ajax" rel="assayResultBox">肝功能</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <div id="assayResultBox" class="unitBox" style="margin-left:246px;">
+        <div id="assayResultBox" class="unitBox" style="margin-left:136px;">
         </div>
       </div>
 
